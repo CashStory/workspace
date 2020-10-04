@@ -1,0 +1,32 @@
+<div class="row h-100 mx-0">
+  <div [class]="getClass()">
+    <nb-card class="h-100 mb-0">
+      <nb-card-header *ngIf="!focusService.isFocus()">
+        <div class="row">
+          <div class="col text-truncate">
+            {{box.name}}
+          </div>
+          <div class="col p-0">
+            <nb-actions size="small" *ngIf="box" class="justify-content-end">
+              <nb-action *ngIf="box.buttons && box.buttons.notebookUrl" icon="atom"
+                (click)="runNotebook(box.buttons.notebookUrl)">
+              </nb-action>
+              <nb-action *ngIf="!box.buttons || box.buttons.backTo === true" icon="chevron-left" (click)="back()">
+              </nb-action>
+              <nb-action *ngIf="!box.buttons || box.buttons.openNewWindow == true" icon="external-link"
+                (click)="blank()">
+              </nb-action>
+              <nb-action *ngIf="!box.buttons || box.title && box.title === 'Stories'" icon="sync" (click)="reload()">
+              </nb-action>
+              <nb-action icon="expand-alt" (click)="fullScreen()">
+              </nb-action>
+            </nb-actions>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" class="m-0 p-0 overflow-hidden">
+        <iframe #iframe id="iframe-box" class="iframe-section w-100 h-100" frameBorder="0"></iframe>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

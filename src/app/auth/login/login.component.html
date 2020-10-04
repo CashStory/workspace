@@ -1,0 +1,63 @@
+<div class="login mx-auto">
+  <div class="text-center">
+    <a href=""><img alt="cashstory logo" class="w-75 bob-logo" src="../../assets/images/logo-bob.png"></a>
+    <p class="by-cs">by CashStory</p>
+  </div>
+
+  <form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">
+
+    <div class="form-control-group pb-3">
+      <label class="label" for="input-email">Email address</label>
+      <input nbInput fullWidth [(ngModel)]="user.username" #email="ngModel" name="email" id="input-email" type="email"
+        placeholder="Enter your email" autofocus [status]="email.dirty ? (email.invalid  ? 'danger' : 'primary') : 'basic'"
+        required="" [attr.aria-invalid]="email.invalid && email.touched ? true : null">
+      <ng-container *ngIf="email.invalid && email.touched">
+        <p class="text-danger" *ngIf="email.errors?.required">
+          Email is required!
+        </p>
+        <p class="text-danger" *ngIf="email.errors?.pattern">
+          Email should be the real one!
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="form-control-group accept-group d-flex flex-row-reverse mt-2 forgot-pass">
+      <a class="fgt-pass-link" routerLink="/auth/reset-pwd">Forgot Password?</a>
+    </div>
+
+    <div class="form-control-group input-group">
+      <label class="label" for="input-password">Password</label>
+      <input nbInput fullWidth [(ngModel)]="user.password" #password="ngModel" name="password" [type]="passwordType"
+        id="input-password" placeholder="Type your password" autocapitalize="none"
+        [status]="password.dirty ? (password.invalid  ? 'danger' : 'primary') : 'basic'" required [minlength]="6"
+        [maxlength]="32" [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+      <button type="button" id="btn-toggle" class="toggle text-success position-absolute border-0 bg-transparent"
+        (click)="showPwd()">
+        <i id="eye-icon"><img alt="show" src="../../assets/images/show.svg"></i>
+      </button>
+      <ng-container *ngIf="password.invalid && password.touched">
+        <p class="text-danger" *ngIf="password.errors?.required">
+          Password is required!
+        </p>
+        <p class="text-danger" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+          Password should contains from 6 to 32 characters
+        </p>
+      </ng-container>
+    </div>
+
+    <button nbButton fullWidth status="primary" class="mt-3" id="login-button" [disabled]="!form.valid">
+      Log In
+    </button>
+  </form>
+  <section *ngIf="activeSamlAuth.length" class="mt-5 d-flex justify-content-center" aria-label="Register">
+    <div class="text-center sso-section">
+      <p>Or enter with:</p>
+      <a class="saml" *ngFor="let authVendor of activeSamlAuth" (click)="redirectToSSO(authVendor)">
+        <img alt="click here" src="{{ApiUrl}}/auth/{{authVendor}}/icon" />
+      </a>
+    </div>
+  </section>
+  <section *ngIf="web" class="mt-5 d-flex justify-content-center create-acc" aria-label="Register">
+    No account?<a class="pl-1 text-link" href="{{landingUrl}}">Create one</a>
+  </section>
+</div>

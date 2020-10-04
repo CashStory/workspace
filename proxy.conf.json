@@ -1,0 +1,29 @@
+{
+  "/local/api": {
+    "target": "http://127.0.0.1:3000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/local/api": "/api"
+    }
+  },
+  "/dev/api": {
+    "target": "https://darkknight.dev.cashstory.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/dev/api": "/api"
+    }
+  },
+  "/prod/api": {
+    "target": "https://darkknight.dev.cashstory.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/prod/api": "/api"
+    }
+  }
+}

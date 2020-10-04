@@ -1,0 +1,186 @@
+<ng-template #deleteModal let-data let-ref="uploadModalRef">
+  <nb-card class="p-5">
+    To delete your account please send an email to <a href="mailto: bob@cashstory.com">bob@cashstory.com</a>
+    <button nbButton class="mt-5" status="primary" type="button" (click)="closeDialog()">close</button>
+  </nb-card>
+</ng-template>
+<div class="row pt-2">
+  <div class="col px-0 px-xl-3">
+    <nb-card>
+      <nb-card-body class="mx-0 mx-sm-3 px-0 px-sm-3 pb-5">
+        <nb-tabset>
+          <nb-tab tabTitle=" Account information" tabIcon="user" responsive>
+            <div class="row mt-0 mt-sm-5" *ngIf="user">
+              <div class="col-xl-3 d-flex justify-content-center">
+                <div class="profile-photo image-upload mb-3 mb-sm-0" [nbSpinner]="loading" nbSpinnerStatus="primary">
+                  <label for="file-input">
+                    <div class="mx-auto">
+                      <nb-user class="account" onlyPicture size="giant" [picture]="upload.getImage(user?.picture)">
+                      </nb-user>
+                    </div>
+                  </label>
+                  <input id="file-input" type="file" (change)="handleFileInput($event.target.files)"
+                    accept="image/png, image/jpeg">
+                </div>
+              </div>
+              <div class="col-12 col-xl-7">
+                <div class="row full-name-inputs">
+                  <div class="col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Firstname</p>
+                    <input type="text" nbInput status="basic" fullWidth name="firstName" [(ngModel)]="user.firstName"
+                      placeholder="First Name" required>
+                  </div>
+                  <div class="col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Lastname</p>
+                    <input type="text" nbInput status="basic" fullWidth name="lastName" [(ngModel)]="user.lastName"
+                      placeholder="Last Name" required>
+                  </div>
+                </div>
+                <div class="row full-name-inputs">
+                  <div class="col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Email</p>
+                    <input nbInput status="basic" fullWidth type="email" name="email" [(ngModel)]="user.email" placeholder="Email"
+                      required>
+                  </div>
+                  <div class="col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Company</p>
+                    <input nbInput status="basic" fullWidth type="text" name="company" [(ngModel)]="user.company.name"
+                      placeholder="Company" required>
+                  </div>
+                </div>
+                <div class="row full-name-inputs">
+                  <div class="col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Function</p>
+                    <nb-select fullWidth status="secondary" placeholder="Select Showcase" [(selected)]="user.userRole"
+                      class="w-100">
+                      <nb-option *ngFor="let userRole of userRoles" [value]="userRole">
+                        {{ userRole }}</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Manager</p>
+                    <nb-select fullWidth placeholder="Select Showcase" status="secondary" [(selected)]="user.manager"
+                      class="w-100">
+                      <nb-option value="" disabled>Yes/No</nb-option>
+                      <nb-option value="true">Yes</nb-option>
+                      <nb-option value="false">No</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 offset-sm-3 mt-4">
+                    <button nbButton status="primary" class="col-12 mb-3 mt-5" type="button" (click)="save()">
+                      Update
+                    </button>
+                  </div>
+                </div>
+                <section class="mt-5 d-flex justify-content-center" aria-label="Register">
+                  <div class="text-center sso-section">
+                    <button (click)="linkedInSync()" nbButton outline status="primary">Or Sync with LinkedIn</button>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </nb-tab>
+          <nb-tab tabTitle=" Password" tabIcon="key" responsive [formGroup]="createBoxForm">
+            <div class="row mt-5" *ngIf="user">
+              <div class="col-12 offset-xl-3 col-xl-6">
+                <div class="row full-name-inputs">
+                  <div class="offset-sm-3 col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">Current password</p>
+                    <input nbInput fullWidth status="basic" type="password" formControlName="currentPassword" name="currentPassword"
+                           [status]="createBoxForm.controls['currentPassword'].errors && createBoxForm.controls['currentPassword'].dirty? 'danger' : ''"
+                           placeholder="My current password">
+                  </div>
+                  <div class="offset-sm-3 col-sm-6 input-group">
+                    <p class="label-account font-weight-bold text-muted mb-1">New Password</p>
+                    <input nbInput fullWidth status="basic" [type]="getInputType()" name="newPassword" formControlName="newPassword"
+                           [status]="createBoxForm.controls['newPassword'].errors && createBoxForm.controls['newPassword'].dirty? 'danger' : ''"
+                      placeholder="My new password">
+                    <button nbSuffix class="toggle show-password text-success position-absolute border-0 bg-transparent" (click)="toggleShowPassword()">
+                      <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                               pack="eva"
+                               [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                      </nb-icon>
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="offset-sm-3 col-sm-6 mt-4">
+                    <button nbButton class="col-12 mb-5 mt-5" status="primary" type="button" [disabled]="createBoxForm.status == 'INVALID'" (click)="changePassword()">
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nb-tab>
+          <nb-tab tabTitle=" Services" tabIcon="shield" responsive>
+            <div class="row mt-0 mt-sm-5" *ngIf="user">
+              <div class="col-12 offset-xl-3 col-xl-6">
+                <div class="row">
+                  <div class="col-12 col-xl-6 m-0 p-0 p-sm-3" *ngFor="let service of getServices()">
+                    <nb-flip-card>
+                      <nb-card-front>
+                        <nb-card status="primary">
+                          <nb-card-header>{{service.authMethod}}</nb-card-header>
+                          <nb-card-body class="d-flex justify-content-center">
+                            <i class="far fa-shield fa-10x mb-4"></i>
+                          </nb-card-body>
+                        </nb-card>
+                      </nb-card-front>
+                      <nb-card-back>
+                        <nb-card status="success">
+                          <nb-card-header>Info</nb-card-header>
+                          <nb-card-body>
+                            <div class="row full-name-inputs mb-4">
+                              <div class="col-12 input-group">
+                                <p class="label-account font-weight-bold text-muted mb-1">Username</p>
+                                <input nbInput status="basic" fullWidth autocomplete="off" type="text" name="username"
+                                  [(ngModel)]="service.login.username">
+                              </div>
+                              <div class="col-12 input-group">
+                                <p class="label-account font-weight-bold text-muted mb-1">Password</p>
+                                <input nbInput status="basic" fullWidth autocomplete="off" type="text" name="password"
+                                  [(ngModel)]="service.login.password">
+                              </div>
+                            </div>
+                          </nb-card-body>
+                        </nb-card>
+                      </nb-card-back>
+                    </nb-flip-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nb-tab>
+          <nb-tab tabTitle=" Settings" tabIcon="exclamation-triangle" responsive>
+            <div class="row mt-5" *ngIf="user">
+              <div class="col-12 offset-xl-3 col-xl-6">
+                <div class="row">
+                  <div class="offset-sm-3 col-sm-6 mt-3">
+                    <button nbButton outline class="col-12 mb-5 mt-5" status="danger" type="button"
+                      (click)="auth.logout()">
+                      Logout
+                    </button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="offset-sm-3 col-sm-6 mt-3">
+                    <button nbButton outline class="col-12 mb-5 mt-5" status="danger" type="button"
+                      (click)="open(deleteModal)">
+                      Delete my account
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nb-tab>
+          <!-- <nb-tab tabTitle="Logs">
+            <ngx-app-blockchain></ngx-app-blockchain>
+          </nb-tab> -->
+        </nb-tabset>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "1.2.0b7"
+tag_format = "$major.$minor.$patch$prerelease"
+version_files = [
+    "info.json",
+    "package.json",
+    "Dockerfile"
+    ]

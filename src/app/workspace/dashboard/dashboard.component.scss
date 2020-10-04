@@ -1,0 +1,32 @@
+// fake line
+
+::ng-deep nb-accordion-item-body .item-body {
+  padding: 0 !important;
+}
+
+.custom-tooltip {
+  .tooltip-inner {
+    padding: 8px;
+
+    p {
+      margin-bottom: 0;
+      color: #fff;
+      font-size: 14px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+span.mobile-info {
+  position: absolute;
+  right: 37px;
+  top: 18px;
+  font-size: 16px;
+}
+
+span.large-screen {
+  cursor: pointer;
+}

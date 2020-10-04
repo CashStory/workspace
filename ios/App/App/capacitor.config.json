@@ -1,0 +1,7 @@
+{
+  "appId": "com.cashstory.bob",
+  "appName": "Bob",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/public"
+}

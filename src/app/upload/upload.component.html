@@ -1,0 +1,17 @@
+<div class="form-group file-upload" [nbSpinner]="loading" nbSpinnerStatus="primary">
+  <div class="file-select">
+    <div class="file-select-button" id="file-name">Choose File</div>
+    <div class="file-select-name" id="no-file" *ngIf="!loading && fileToUpload">
+      {{  fileToUpload.name }}
+    </div>
+    <input nbInput status="basic" class="button-validate file-select-button" type="file" id="file" name="chooseFile"
+      (change)="handleFileInput($event.target.files)" #fileInp>
+    <!-- <ngx-dropzone (change)="onSelect($event)">
+      <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+      <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone> -->
+    <div [ngClass]="{download: !loading, isUpload: loading}" (click)="onClickFile()"></div>
+  </div>
+</div>

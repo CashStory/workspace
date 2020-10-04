@@ -1,0 +1,30 @@
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card status="primary">
+    <nb-card-header>
+      Problem with upload?
+    </nb-card-header>
+    <nb-card-body>
+      <p>Check the JSON syntax with <a class="mr-2" href="https://jsonlint.com/" target="_blank">JsonLint</a></p>
+      <p>Check if your file work with our library <a class="mr-2" href="https://oss.sheetjs.com/js-xlsx/"
+          target="_blank">Js xlsx</a></p>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton status="primary" (click)="ref.close()">Close</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>
+
+<nb-card status="primary" class="size-card">
+  <nb-card-header>
+    <div class="row">
+      <p class="col text-light mb-0">Add new {{kind}}</p>
+      <nb-action icon="question-circle" (click)="open(dialog)" class="col-2 justify-content-center">
+      </nb-action>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-upload class="btn-file col-lg-8" [uploadFile]="false" (fileOut)="parseFile($event)"></ngx-upload>
+  </nb-card-body>
+  <nb-card-footer class="text-center"><button nbButton status="primary" (click)="add()">Add</button>
+  </nb-card-footer>
+</nb-card>

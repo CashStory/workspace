@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Montserra:300,400,600,700|Lato:300,400,600,700|Open+Sans:300,400,600,700&display=swap');
+
+// themes - our custom or/and out of the box themes
+@import 'themes';
+
+// framework component themes (styles tied to theme variables)
+@import '~@nebular/theme/styles/globals';
+@import '~@nebular/auth/styles/all';
+@import '~@nebular/bootstrap/styles/globals';
+@import '../../assets/fonts/fonts.scss';
+
+
+// loading progress bar theme
+@import './pace.theme';
+
+@import './overrides';
+
+// install the framework and custom global styles
+@include nb-install() {
+
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+  @include nb-bootstrap-global();
+
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  @include nb-overrides();
+}
+
+.fa,
+.fas,
+.far,
+.fal,
+.fab {
+  font-family: 'Font Awesome 5 Free', sans-serif;
+}
+
+html {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+
+  .crisp-client {
+    display: none;
+  }
+
+}

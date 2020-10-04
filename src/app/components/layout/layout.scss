@@ -1,0 +1,29 @@
+@import '~@nebular/theme/styles/global/breakpoints';
+
+::ng-deep nb-layout-header {
+  padding-top: env(safe-area-inset-top);
+
+  nav {
+    padding-right: 0 !important;
+  }
+}
+
+::ng-deep nb-sidebar .main-container {
+  padding-top: env(safe-area-inset-top);
+}
+
+
+.bg-logo {
+  background-image: url('/assets/images/quarter_logo_cashstory.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 20%;
+  background-attachment: fixed;
+}
+
+@include media-breakpoint-down(sm) {
+
+  .bg-logo {
+    background-size: 80%;
+  }
+}

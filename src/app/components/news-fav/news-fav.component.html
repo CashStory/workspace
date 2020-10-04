@@ -1,0 +1,21 @@
+<article [class]="getClass()">
+  <div class="row align-item-start pl-md-3">
+    <div class="col-12 col-md-5 mb-3 pl-md-0">
+      <img alt="fav-img" *ngIf="fav.attachement && fav.attachement_type && fav.attachement_type === 'image'"
+        class="img-fluid img-crop" [src]="fav.attachement" (error)="fav.attachement=false" />
+      <iframe *ngIf="fav.attachement && fav.attachement_type && fav.attachement_type === 'iframe'" width="100%"
+        height="100%" [src]="cleanUrl" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe *ngIf="fav.attachement && fav.attachement_type && fav.attachement_type === 'video'" width="100%"
+        height="100%" [src]="cleanUrl" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    </div>
+    <div class="col pl-md-0 pr-md-4">
+      <h5 class="font-weight-bold">{{fav.name}}</h5>
+      <p [innerHTML]="fav.description"></p>
+      <div class="">
+        <a *ngIf="fav.target || fav.wp" href="" (click)="openTarget()">Open <i
+            class="far fa-chevron-right fa-xs"></i></a>
+      </div>
+    </div>
+  </div>
+</article>

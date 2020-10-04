@@ -1,0 +1,57 @@
+@import '~@nebular/theme/styles/global/breakpoints';
+
+:host {
+  $auth-layout-padding: 2.5rem;
+
+  nb-card {
+    margin: 0;
+    height: calc(100vh - 2 * #{$auth-layout-padding});
+  }
+
+  .navigation .link {
+    text-decoration: none;
+
+    .icon {
+      font-size: 2rem;
+    }
+  }
+
+  nb-card-body {
+    display: flex;
+    width: 100%;
+  }
+
+  .nb-auth-block {
+    margin: auto;
+    max-width: 35rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+    nb-card {
+      border-radius: 0;
+      height: 100vh;
+    }
+  }
+
+  ::ng-deep {
+    nb-layout .layout .layout-container .content .columns nb-layout-column {
+      padding: $auth-layout-padding;
+
+      @include media-breakpoint-down(sm) {
+        padding: 0;
+      }
+    }
+  }
+}
+.bg-logo {
+  background-image: url('/assets/images/quarter_logo_cashstory.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 20%;
+  background-attachment: fixed;
+}
+@include media-breakpoint-down(sm) {
+  .bg-logo {
+    background-size: 80%;
+  }
+}

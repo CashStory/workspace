@@ -1,0 +1,70 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+::ng-deep nb-tabset ul {
+  justify-content: center;
+}
+
+::ng-deep .tab-text {
+  margin-left: 10px;
+}
+
+::ng-deep nb-user.account div div {
+  height: 8rem !important;
+  width: 8rem !important;
+  cursor: pointer;
+}
+
+::ng-deep nb-user.account .info-container {
+  display: none;
+}
+
+.label-account {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.photo-profil {
+  // background-image: url('assets/images/avatar.png');
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.sso-section button {
+  text-transform: none;
+  background-color: #fff;
+}
+
+.image-upload>input {
+  display: none;
+}
+
+.show-password {
+  right: 1.3em;
+  top: 2.4em;
+  &:focus {
+    outline: none;
+  }
+}
+@import '../../styles/themes';
+
+.delete {
+  cursor: pointer;
+}
+
+@include nb-install-component() {
+  nb-select {
+    display: block;
+    width: 15rem;
+  }
+}

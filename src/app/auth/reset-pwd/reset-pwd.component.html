@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form [formGroup]="registerMailForm" (ngSubmit)="sendMailToken()">
+        <h2>Forgot password?</h2>
+        <p>Enter the email adress of your bobapp account, we will send you an email with instruction
+          to reset your password. </p>
+        <input nbInput status="basic" fullWidth class="mb-3" type="email" name="email" formControlName="email"
+          placeholder="Type your email adress">
+        <button nbButton fullWidth class="mb-3" status="primary" type="submit" [disabled]="!registerMailForm.valid">
+          Reset Password
+        </button>
+        <a routerLink="/auth/login">
+          Back to Login </a>
+        <a class="float-right" href="{{landingUrl}}">
+          Sign up</a>
+      </form>
+    </div>
+  </div>
+</div>

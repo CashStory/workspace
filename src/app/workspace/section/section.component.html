@@ -1,0 +1,137 @@
+<div #elementToCheck class="row mx-0" *ngIf="!loading && section && !box" cdkDropListGroup [cdkDropListGroupDisabled]="this.lockStatus">
+  <div cdkDropList [cdkDropListEnterPredicate]="dropListEnterPredicate" (cdkDropListDropped)="dropListDropped($event)"></div>
+  <div class="col-12 col-md-4 col-xl-3 px-0 px-md-2 px-xl-3"
+       *ngFor="let boxx of getBoxes(); let y = index"
+       cdkDropList
+       [cdkDropListEnterPredicate]="dropListEnterPredicate"
+       (cdkDropListDropped)="dropListDropped($event)">
+    <nb-card class="text-center card-box" cdkDrag (cdkDragMoved)="dragMoved($event);">
+      <nb-card-body class="mx-0 p-0 rounded-top card-bg" [style.background-image]="getUrlBg(boxx)">
+        <div class="overlay">
+          <div *ngIf="user.role"
+            class="overlay-actions position-absolute text-white mt-3 ml-3">
+            <div *ngIf="!this.lockStatus">
+              <span title="Edit box name" class="p-1" (click)="boxActions(boxx, 'edit')">
+                <i class="far fa-edit"></i>
+              </span>
+              <span title="Copy the box" class="p-1" (click)="boxActions(boxx, 'copy')">
+                <i class="far fa-copy"></i>
+              </span>
+              <span title="Delete the box" class="p-1" (click)="boxActions(boxx, 'delete')">
+                <i class="far fa-trash-alt"></i>
+              </span>
+            </div>
+          </div>
+          <span (click)="selectFav(boxx)">
+            <i [class]="getFavClass(boxx)"></i>
+          </span>
+          <span (click)="selectBox(boxx)">
+            <i class="far fa-play position-absolute text-white"></i>
+          </span>
+        </div>
+        <!-- <img alt="box app" src="{{boxx.urlBg}}" class="w-100"> -->
+      </nb-card-body>
+      <nb-card-footer [attr.style]="('color:' + boxx.color + ' !important;' + 'background-color:' + boxx.backgroundColor) | safeStyle"
+        class="text-white text-uppercase font-weight-bold rounded-bottom border-0 text-truncate">
+        {{ boxx.name }}
+      </nb-card-footer>
+    </nb-card>
+  </div>
+  <div *ngIf="user.role && !this.lockStatus" class="col-12 col-md-4 col-xl-3 px-0 px-md-2 px-xl-3">
+    <div class="new-card-box" (click)="initPopUp(false)">
+      <i class="fal fa-plus position-absolute"></i>
+    </div>
+  </div>
+  <ngx-edit-lock (lockClicked)="changeLockStatus($event)"></ngx-edit-lock>
+</div>
+<div class="row mx-0 w-100 h-100" [nbSpinner]="loading" nbSpinnerStatus="primary" *ngIf="section && !box">
+  <div class="w-100 h-100"></div>
+</div>
+<ngx-box *ngIf="section && box && box.url" [box]="box" [sectionId]="section.id"
+  [workspaceId]="auth.getCurrentWorkSpace()._id" (backAction)="back()">
+</ngx-box>
+<ngx-smart-table *ngIf="section && box && box.smartTable" [box]="box" [sectionId]="section.id"
+  [workspaceId]="auth.getCurrentWorkSpace()._id" (backAction)="back()">
+</ngx-smart-table>
+<ng-template #contentTemplate let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-body [formGroup]="createBoxForm">
+
+      <nb-tabset>
+        <nb-tab tabTitle="Configuration">
+          <div class="input-group">
+            <p class="label-account font-weight-bold text-muted mb-1">Name</p>
+            <input type="text" nbInput fullWidth formControlName="name" placeholder="My box name" required
+              [status]="createBoxForm.controls['name'].errors && createBoxForm.controls['name'].dirty? 'danger' : ''">
+          </div>
+          <div class="input-group">
+            <p class="label-account font-weight-bold text-muted mb-1">Color</p>
+            <input type="text" nbInput fullWidth formControlName="color" readonly placeholder="Box name color"
+                   [status]="createBoxForm.controls['color'].errors && createBoxForm.controls['color'].dirty? 'danger' : ''"
+                   [(colorPicker)]="nameColor.value"
+                   [value]="nameColor.value"
+                   [style.background]="nameColor.value"
+                   (colorPickerChange)="setNameColor($event)">
+          </div>
+          <div class="input-group">
+            <p class="label-account font-weight-bold text-muted mb-1">Background Color</p>
+            <input type="text" nbInput fullWidth formControlName="backgroundColor" readonly placeholder="Box name background color"
+                   [status]="createBoxForm.controls['backgroundColor'].errors && createBoxForm.controls['backgroundColor'].dirty? 'danger' : ''"
+                   [(colorPicker)]="nameBgColor.value"
+                   [value]="nameBgColor.value"
+                   [style.background]="nameBgColor.value"
+                   (colorPickerChange)="setNameBgColor($event)">
+          </div>
+          <div class="input-group">
+            <p class="label-account font-weight-bold text-muted mb-1">Background picture</p>
+            <ngx-upload class="w-100 pt-1" (fileOut)="onFileUploaded($event)"></ngx-upload>
+            <input type="text" nbInput fullWidth formControlName="urlBg" placeholder="My box background" required
+              [status]="createBoxForm.controls['urlBg'].errors && createBoxForm.controls['urlBg'].dirty? 'danger' : ''">
+          </div>
+    
+          <div class="input-group">
+            <p class="label-account font-weight-bold text-muted mb-1">Source URL</p>
+            <input type="text" nbInput fullWidth formControlName="url" placeholder="My box source url" required
+              [status]="createBoxForm.controls['url'].errors && createBoxForm.controls['url'].dirty? 'danger' : ''">
+          </div>
+    
+          <div class="input-group">
+            <nb-checkbox formControlName="iframe">iframe</nb-checkbox>
+          </div>
+          <div class="input-group">
+            <nb-checkbox formControlName="autoExpand">Auto Expand</nb-checkbox>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="Credentials">
+          <div class="input-group">
+            <p class="label-account font-weight-bold text-muted mb-1">Service</p>
+            <input type="text" nbInput fullWidth formControlName="authMethod">
+          </div>
+          <div formGroupName="login">
+            <div class="input-group">
+              <p class="label-account font-weight-bold text-muted mb-1">Login</p>
+              <input type="text" nbInput fullWidth formControlName="username">
+            </div>
+            <div class="input-group">
+              <p class="label-account font-weight-bold text-muted mb-1">Password</p>
+              <input type="text" nbInput fullWidth formControlName="password">
+            </div>
+          </div>
+        </nb-tab>
+       </nb-tabset>
+
+      
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="col col-xs-6">
+          <button class="cancel" nbButton status="danger" (click)="ref.close()">Cancel</button>
+        </div>
+        <div class="col col-xs-6 text-right">
+          <button nbButton status="primary" [disabled]="createBoxForm.status == 'INVALID'"
+            (click)="submitHandler(IsEditMode)">Submit</button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

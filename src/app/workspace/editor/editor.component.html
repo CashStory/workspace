@@ -1,0 +1,30 @@
+<div class="row h-100 mx-0" (keydown)="onKeyDown($event)" tabindex="0">
+  <div [class]="getClass()">
+    <nb-card [class]="getClassCard()">
+      <nb-card-header>
+        <div class="row">
+          <div class="col text-truncate">
+            {{fileName}}
+          </div>
+          <div class="col-8 col-md-2 p-0">
+            <nb-actions size="small" class="" fullWidth>
+              <nb-action icon="chevron-left" (click)="closeEditor()">
+              </nb-action>
+              <nb-action icon="check" (click)="checkJson()">
+              </nb-action>
+              <nb-action icon="sync" (click)="reload()">
+              </nb-action>
+              <nb-action icon="expand-alt" (click)="fullScreen()">
+              </nb-action>
+            </nb-actions>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body class="m-0 p-0 overflow-hidden">
+        <ngx-monaco-editor [nbSpinner]="loading" nbSpinnerStatus="primary" class="my-code-editor" [model]="dataModel"
+          [options]="editorOptions" (onInit)="monacoInited($event)">
+        </ngx-monaco-editor>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

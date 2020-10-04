@@ -1,0 +1,9 @@
+<div [class]="wrapperClass()">
+  <div class="floating-button-elements">
+    <ng-content></ng-content>
+  </div>
+  <button nbButton outline="false" shape="round" status="{{status}}" class="floating-button" (click)="clickAction()">
+    <img *ngIf="img" width="10px" title="{{label}}" alt="{{label}}" src="{{img}}">
+    <nb-icon *ngIf="!img" icon="{{icon}}" status="{{iconStatus}}"></nb-icon>
+  </button>
+</div>

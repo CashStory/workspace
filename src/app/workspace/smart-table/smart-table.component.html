@@ -1,0 +1,43 @@
+<ng-template #uploadModal let-data let-ref="uploadModalRef">
+  <ngx-upload-card [kind]="box.name" (addAll)="addAll($event)">
+  </ngx-upload-card>
+</ng-template>
+<div class="row h-100 mx-0" *ngIf="!file">
+  <div [class]="getClass()">
+    <nb-card>
+      <nb-card-header *ngIf="!focusService.isFocus()">
+        <div class="row">
+          <div class="col text-truncate">
+            {{box.name}}
+          </div>
+          <div class="col p-0">
+            <nb-actions size="small" class="justify-content-end">
+              <nb-action *ngIf="box.buttons && box.buttons.notebookUrl" icon="atom"
+                (click)="runNotebook(box.buttons.notebookUrl)">
+              </nb-action>
+              <nb-action *ngIf="!box.buttons || box.buttons.backTo === true" icon="chevron-left" (click)="back()">
+              </nb-action>
+              <nb-action *ngIf="!box.buttons || box.buttons.upload === true" icon="file-upload"
+                (click)="upload(uploadModal)">
+              </nb-action>
+              <nb-action *ngIf="!box.buttons || box.buttons.reload === true" icon="sync" (click)="reload()">
+              </nb-action>
+              <nb-action icon="expand-alt" (click)="fullScreen()">
+              </nb-action>
+            </nb-actions>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body class="col p-0" [nbSpinner]="this.tableLoadingSpinner" nbSpinnerStatus="primary">
+        <ng2-smart-table #table ngui-overlay-of="window" [settings]="settings" [source]="source"
+          (custom)="onCustomAction($event)" (createConfirm)="basicAction('addInlineAction', $event)"
+          (deleteConfirm)="basicAction('deleteInlineAction', $event)"
+          (editConfirm)="basicAction('editInlineAction', $event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<ngx-editor *ngIf="file" [file]="file" [fileModel]="fileModel" [fileName]="fileName" (save)="editDoc($event)"
+  (close)="backTolist()">
+</ngx-editor>

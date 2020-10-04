@@ -1,0 +1,66 @@
+.edit-lock {
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translate(-50%, -50%);
+
+  .lock {
+    position:relative;
+    cursor:pointer;
+    height:32px;
+    background-color: white;
+    border-radius: 15px;
+    padding-right: 5px;
+    margin-bottom: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    input {
+      display:none;
+    }
+
+    span {
+      &::before {
+        content:'';
+        width:64px;
+        height:32px;
+        margin-right:8px;
+        background:#a0a0a0;
+        border-radius:32px;
+        display:inline-block;
+        vertical-align:middle;
+        transition:all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
+      }
+
+      &::after {
+        content:'';
+        margin:2px;
+        width:28px;
+        height:28px;
+        background:#fff;
+        border-radius:28px;
+        position:absolute;
+        left:0;
+        background-image: url('/assets/images/lock.png');
+        background-size: 16px 16px;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index:2;
+        transition:all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
+      }
+    }
+
+    input:checked+span::after {
+      left:32px;
+      background-image:none;
+    }
+
+    input:checked+span::before {
+      background-color:#84eca3;
+    }
+  }
+}

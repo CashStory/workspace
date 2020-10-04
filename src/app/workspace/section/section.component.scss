@@ -1,0 +1,140 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.card-box {
+  height: 281px;
+}
+
+.new-card-box {
+  height: 281px;
+  position: relative;
+  color: #8f9bb3;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: solid 3px #c1c1c1;
+
+  .position-absolute {
+    font-size: 80px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #84eca3;
+    transition: all 0.3s ease;
+
+  }
+}
+
+.new-card-box:hover {
+  background: #ffffff;
+}
+
+.card-bg {
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+:host ::ng-deep nb-card-footer {
+  height: 40px;
+  padding: 0.8rem;
+  background-color: #a0a0a0;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+
+@media (any-hover: none) {
+
+  :host ::ng-deep .fa-play {
+    display: flex;
+    cursor: pointer;
+    top: 40%;
+    left: 45%;
+    font-size: 55px;
+  }
+
+  .new-card-box {
+    background: #ffffff;
+  }
+
+  :host ::ng-deep nb-card .fa-star {
+    display: flex;
+    cursor: pointer;
+    top: 5%;
+    right: 5%;
+    font-size: 1.4rem;
+  }
+
+  :host ::ng-deep nb-card .overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+}
+
+.overlay-actions {
+  span {
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+}
+
+@media (any-hover: hover) {
+
+  :host ::ng-deep .fa-play {
+    display: none;
+    top: 40%;
+    left: 45%;
+    font-size: 55px;
+  }
+
+  .overlay-actions {
+    display: none;
+  }
+
+
+  :host ::ng-deep nb-card:hover .fa-play {
+    display: flex;
+    cursor: pointer;
+  }
+
+  :host ::ng-deep nb-card .fa-star {
+    display: none;
+    top: 5%;
+    right: 5%;
+    font-size: 1.4rem;
+  }
+
+  :host ::ng-deep nb-card:hover .fa-star {
+    display: flex;
+    cursor: pointer;
+  }
+
+  :host ::ng-deep nb-card:hover .overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+
+  :host ::ng-deep nb-card:hover .overlay-actions {
+    display: block;
+  }
+}
+
+// :host ::ng-deep nb-action a {
+//     color: rgb(61, 59, 59);
+// }

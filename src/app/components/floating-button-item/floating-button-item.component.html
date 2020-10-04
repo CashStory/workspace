@@ -1,0 +1,7 @@
+<div class="floating-button-item">
+  <div class="floating-button-item-label">{{label}}</div>
+  <button nbButton outline="false" shape="round" status="{{status}}" class="floating-button">
+    <img *ngIf="img" width="10px" title="{{label}}" alt="{{label}}" src="{{img}}">
+    <nb-icon *ngIf="!img" icon="{{icon}}" status="{{status}}"></nb-icon>
+  </button>
+</div>

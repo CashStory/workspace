@@ -1,0 +1,29 @@
+{
+  "request": {
+    "url": "http://localhost:4200/local/api/v1/auth/login",
+    "method": "POST",
+    "headers": {
+      "sec-ch-ua": "",
+      "accept": "application/json, text/plain, */*",
+      "referer": "http://localhost:4200/auth/login",
+      "sec-ch-ua-mobile": "?0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36",
+      "content-type": "application/json"
+    },
+    "body": {
+      "username": "bob@cashstory.com",
+      "password": "bobworkspace"
+    },
+    "resourceType": "xhr"
+  },
+  "response": {
+    "url": "http://localhost:4200/local/api/v1/auth/login",
+    "status": 504,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "connection": "keep-alive",
+      "transfer-encoding": "chunked"
+    },
+    "body": "Error occured while trying to proxy to: localhost:4200/api/v1/auth/login"
+  }
+}

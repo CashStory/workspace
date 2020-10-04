@@ -1,0 +1,15 @@
+<nb-card>
+    <nb-card-header>Duplicate Workspace</nb-card-header>
+    <nb-card-body>
+        <p>To edit, Duplicate this Workspace first!</p>
+        <input type="text" [(ngModel)]="wpName" nbInput placeholder="Workspace Name">
+        <ng-container *ngIf="invalidWpName">
+            <p class="text-danger" >
+                Valid name is required for the workspace
+            </p>
+        </ng-container>
+    </nb-card-body>
+    <nb-card-footer class="example-items-rows">
+    <button nbButton status="success" (click)="duplicateWP()">Proceed</button>
+    </nb-card-footer>
+</nb-card>

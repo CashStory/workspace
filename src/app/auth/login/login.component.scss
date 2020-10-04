@@ -1,0 +1,53 @@
+.toggle {
+  right: 0.75em;
+  top: 2.5em;
+}
+.sso-section {
+  a {
+    color: #999999;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+}
+.saml {
+  img {
+    height: 26px;
+  }
+}
+
+.bob-logo {
+  width: 175.7px;
+  height: 86.9px;
+  object-fit: contain;
+}
+
+.by-cs {
+  font-size: 13px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8f9bb3;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.forgot-pass {
+  margin-bottom: -18px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.fgt-pass-link {
+  z-index: 1;
+  text-decoration: none !important;
+}
+.label {
+  font-size: 15px;
+}
+
+.create-acc {
+  font-weight: bold;
+  color: #8a8a8a;
+}

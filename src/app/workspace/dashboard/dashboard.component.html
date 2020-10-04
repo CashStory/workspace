@@ -1,0 +1,102 @@
+<div class="infinite-cards row mx-0 col-12 px-0 d-md-none">
+  <nb-accordion>
+    <nb-accordion-item expanded *ngIf="workspaceConfig?.favorites.name || userworkspaceConfig?.favorites.name">
+      <nb-accordion-item-header>
+        <h5>
+          <i class="fal fa-star text-muted mr-3"></i>
+          {{workspaceConfig.favorites.name}}
+          <ng-template #favContent>
+            <p>Go to any section and star boxes to pin them here.</p>
+          </ng-template>
+          <span class="float-right mobile-info" [ngbTooltip]="favContent" (click)="$event.stopPropagation()" tooltipClass="custom-tooltip mobile" placement="left" triggers="click:blur">
+            <i class="fal fa-info-circle text-muted"></i>
+          </span>
+        </h5>
+      </nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <nb-list id="fav-mobile">
+          <nb-list-item *ngFor="let fav of workspaceConfig.favorites.boxes">
+            <ngx-news-fav [fav]="fav"></ngx-news-fav>
+          </nb-list-item>
+          <nb-list-item *ngFor="let fav of userworkspaceConfig.favorites.boxes">
+            <ngx-news-fav [fav]="fav"></ngx-news-fav>
+          </nb-list-item>
+        </nb-list>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+    <nb-accordion-item *ngIf="workspaceConfig?.news.name">
+      <nb-accordion-item-header>
+        <h5>
+          <i class="fal fa-newspaper text-muted mr-3"></i>
+          {{workspaceConfig.news.name}}
+          <ng-template #newsContent>
+            <p>To customize your News feed, <a [routerLink]="'/assistance'" title="Assistance">Contact us.</a></p>
+          </ng-template>
+          <span class="float-right mobile-info" [ngbTooltip]="newsContent" (click)="$event.stopPropagation()" tooltipClass="custom-tooltip mobile" placement="left" triggers="click:blur">
+            <i class="fal fa-info-circle text-muted"></i>
+          </span>
+        </h5>
+      </nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <nb-list id="news-mobile" nbInfiniteList listenWindowScroll [threshold]="2000" (bottomThreshold)="loadNext()">
+          <nb-list-item *ngFor="let newsPost of news">
+            <ngx-news-post [post]="newsPost"></ngx-news-post>
+          </nb-list-item>
+          <nb-list-item *ngFor="let _ of placeholders">
+            <ngx-news-post-placeholder></ngx-news-post-placeholder>
+          </nb-list-item>
+        </nb-list>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</div>
+<div class="infinite-cards row mx-0 d-none d-md-flex">
+  <div *ngIf="workspaceConfig?.news.name" [class]="workspaceConfig?.news.class">
+    <nb-card>
+      <nb-card-header>
+        <h5>
+          <i class="fal fa-newspaper text-muted mr-3"></i>
+          {{workspaceConfig.news.name}}
+          <ng-template #newsContent>
+            <p>To customize your News feed, <a [routerLink]="'/assistance'" title="Assistance">Contact us.</a></p>
+          </ng-template>
+          <span class="large-screen float-right" [ngbTooltip]="newsContent" tooltipClass="custom-tooltip" placement="left" triggers="click:blur">
+            <i class="fal fa-info-circle text-muted"></i>
+          </span>
+        </h5>
+      </nb-card-header>
+      <nb-list id="news" nbInfiniteList listenWindowScroll [threshold]="2000" (bottomThreshold)="loadNext()">
+        <nb-list-item *ngFor="let newsPost of news">
+          <ngx-news-post [post]="newsPost"></ngx-news-post>
+        </nb-list-item>
+        <nb-list-item *ngFor="let _ of placeholders">
+          <ngx-news-post-placeholder></ngx-news-post-placeholder>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </div>
+  <div *ngIf="workspaceConfig?.favorites.name || userworkspaceConfig?.favorites.name" [class]="workspaceConfig.favorites.class">
+    <nb-card>
+      <nb-card-header>
+        <h5>
+          <i class="fal fa-star text-muted mr-3"></i>
+          {{workspaceConfig.favorites.name}}
+          <ng-template #favContent>
+            <p>Go to any section and star boxes to pin them here.</p>
+          </ng-template>
+          <span class="large-screen float-right" [ngbTooltip]="favContent" tooltipClass="custom-tooltip" placement="left" triggers="click:blur">
+            <i class="fal fa-info-circle text-muted"></i>
+          </span>
+        </h5>
+      </nb-card-header>
+      <nb-list id="fav">
+        <nb-list-item *ngFor="let fav of workspaceConfig.favorites.boxes">
+          <ngx-news-fav [fav]="fav"></ngx-news-fav>
+        </nb-list-item>
+        <nb-list-item *ngFor="let fav of userworkspaceConfig.favorites.boxes">
+          <ngx-news-fav [fav]="fav"></ngx-news-fav>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </div>
+</div>

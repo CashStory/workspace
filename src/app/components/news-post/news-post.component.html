@@ -1,0 +1,18 @@
+<article>
+  <div class="row align-item-start pl-md-3">
+    <div class="col-12 col-md-5 mb-3 pl-md-0" *ngIf="post.img">
+      <img alt="new-img" class="img-fluid img-crop" [src]="post.img" (error)="post.img=false" />
+    </div>
+    <div class="col pl-md-0 pr-md-4">
+      <h5 class="font-weight-bold">{{post.title}}</h5>
+      <p>{{post.publishTime | date}} by {{post.source}} <span class="badge ml-2 pb-1"
+          [ngClass]="getScoreClass(post.score)">{{post.score}}%</span>
+      </p>
+      <p [innerHTML]="post.text"></p>
+      <div class="">
+        <a *ngIf="post.link" [attr.href]="post.link" target="_blank">Read full article <i
+            class="far fa-chevron-right fa-xs"></i></a>
+      </div>
+    </div>
+  </div>
+</article>

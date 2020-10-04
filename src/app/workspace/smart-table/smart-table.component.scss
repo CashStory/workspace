@@ -1,0 +1,89 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+:host ::ng-deep nb-action a {
+  font-size: inherit;
+  color: rgb(61, 59, 59);
+}
+
+@include media-breakpoint-down(sm) {
+  :host ::ng-deep ng2-smart-table {
+    float: left;
+  }
+}
+
+:host ::ng-deep ng2-smart-table table {
+  white-space: nowrap;
+}
+
+:host ::ng-deep ng2-smart-table table tr td {
+  // padding-top: 0;
+  // padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+:host ::ng-deep th.ng2-smart-actions {
+  width: 100px;
+}
+:host ::ng-deep td.ng2-smart-actions {
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  padding: 0.375rem;
+  white-space: nowrap;
+  &>ng2-st-actions {
+    display: flex !important;
+    a {
+      text-align: center;
+    }
+  }
+  &>* {
+    display: inline-block !important;
+    a.ng2-smart-action {
+      display: inline;
+      line-height: 32px;
+    }
+  }
+  &>ng2-st-tbody-create-cancel {
+    display: flex !important;
+    a {
+      text-align: center;
+    }
+  }
+
+  ng2-st-tbody-edit-delete:not(:empty) {
+    flex-grow: 1;
+  }
+
+  ng2-st-tbody-create-cancel:not(:empty) {
+    flex-grow: 1;
+  }
+
+  ng2-st-actions:not(:empty) {
+    flex-grow: 1;
+  }
+
+  ng2-st-tbody-custom:not(:empty)+ng2-st-tbody-edit-delete:not(:empty) {
+    border-collapse: collapse;
+    border-left: 1px solid #edf1f7;
+  }
+
+  ng2-st-tbody-custom:not(:empty) {
+    display: flex;
+    flex-grow: 1;
+    border-collapse: collapse;
+
+    a:hover {
+      color: #29d46d;
+    }
+  }
+
+  .svg-inline--fa.fa-w-18 {
+    width: 0.95em;
+  }
+
+  .svg-inline--fa.fa-w-14 {
+    width: 0.825em;
+  }
+}
