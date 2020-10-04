@@ -15,18 +15,15 @@ const TARGET_ANDROID_SPLASH = 'android/app/src/main/res/';
 const IOS_ICONS = {
     "icon-20.png":      "AppIcon-20x20@1x.png",
     "icon-20@2x.png":   "AppIcon-20x20@2x.png",
-    "icon-20@2x.png":   "AppIcon-20x20@2x-1.png",
     "icon-20@3x.png":   "AppIcon-20x20@3x.png",
     "icon-29.png":      "AppIcon-29x29@1x.png",
     "icon-29@2x.png":   "AppIcon-29x29@2x.png",
-    "icon-29@2x.png":   "AppIcon-29x29@2x-1.png",
     "icon-29@3x.png":   "AppIcon-29x29@3x.png",
     "icon-40.png":      "AppIcon-40x40@1x.png",
     "icon-40@2x.png":   "AppIcon-40x40@2x.png",
     "icon-40@3x.png":   "AppIcon-40x40@3x.png",
     "icon-60.png":      "AppIcon-60x60@1x.png",
     "icon-60@2x.png":   "AppIcon-60x60@2x.png",
-    "icon-60@2x.png":   "AppIcon-60x60@2x-1.png",
     "icon-60@3x.png":   "AppIcon-60x60@3x.png",
     "icon-72.png":      "AppIcon-72x72.png",
     "icon-72@2x.png":   "AppIcon-72x72@2x.png",
@@ -38,8 +35,6 @@ const IOS_ICONS = {
 };
 const IOS_SPLASHES = {
     "Default-Portrait@~ipadpro.png": "splash-2732x2732.png",
-    "Default-Portrait@~ipadpro.png": "splash-2732x2732-1.png",
-    "Default-Portrait@~ipadpro.png": "splash-2732x2732-2.png"
 }
 
 const ANDROID_ICONS = {
