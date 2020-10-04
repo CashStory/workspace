@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require("fs");
 const app = express();
+app.disable('x-powered-by');
 
 const API_BASEROUTE = process.env.API_BASEROUTE ||'https://darkknight.cashstory.com/api/v1';
 const API_WEKAN = process.env.API_WEKAN ||'https://task.cashstory.com';
