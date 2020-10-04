@@ -53,7 +53,7 @@ jobs:
           push: true
           tags: ${{ steps.prepare.outputs.tag }}
           secrets: |
-          GIT_AUTH_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            GIT_AUTH_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Update repo description
         uses: peter-evans/dockerhub-description@v2
         with:
