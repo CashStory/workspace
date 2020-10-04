@@ -25,6 +25,7 @@ COPY . /app/
 RUN npm i
 
 # build server
+RUN npm start jsonModel
 RUN npm start build
 
 CMD [ "node", "serve.js" ]
