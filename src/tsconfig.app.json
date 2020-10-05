@@ -1,8 +1,5 @@
 {
   "extends": "../tsconfig.json",
-  "angularCompilerOptions": {
-    "enableIvy": false,
-  },
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "../out-tsc/app",
