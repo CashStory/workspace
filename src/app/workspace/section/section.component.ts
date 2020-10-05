@@ -207,7 +207,7 @@ export class SectionComponent implements OnInit, OnDestroy {
     dropElement.parentElement.insertBefore(phElement, (dropIndex > dragIndex
       ? dropElement.nextSibling : dropElement));
 
-    this.placeholder.enter(drag, drag.element.nativeElement.offsetLeft, drag.element.nativeElement.offsetTop);
+    this.placeholder._dropListRef.enter(drag._dragRef, drag.element.nativeElement.offsetLeft, drag.element.nativeElement.offsetTop);
     return false;
   }
 

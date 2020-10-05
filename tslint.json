@@ -37,6 +37,9 @@
       true,
       "check-space"
     ],
+    "deprecation": {
+      "severity": "warning"
+    },
     "eofline": true,
     "forin": true,
     "import-blacklist": [

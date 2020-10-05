@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     this.iconLibraries.registerFontPack('fal', { packClass: 'fal', iconClassPrefix: 'fa' });
     this.iconLibraries.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
     this.iconLibraries.setDefaultPack('fal'); // <---- set as default
+
   }
 
   ngOnInit() {
