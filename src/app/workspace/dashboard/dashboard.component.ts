@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   init() {
     this.auth.updateSectionBox(null, null);
-    combineLatest(this.auth.currentUserObs, this.auth.currentWpObs)
+    combineLatest([this.auth.currentUserObs, this.auth.currentWpObs])
       .subscribe(([currentUsr, currentWs]) => {
         if (currentUsr && currentWs) {
           if (currentUsr.workspaces[currentWs.id]) {
