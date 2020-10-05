@@ -2,7 +2,7 @@ const npsUtils=require('nps-utils');
 
 module.exports= {
     scripts: {
-        default: npsUtils.series.nps('conf.init', 'jsonModel', 'run'),
+        default: npsUtils.series.nps('conf.init', 'run'),
         run: 'ng serve --proxy-config proxy.conf.json --open',
         build:  'ng build --configuration=master',
         serve: 'node serve.js',
