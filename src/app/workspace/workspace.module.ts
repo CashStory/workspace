@@ -1,7 +1,5 @@
 import { BoxComponent } from './box/box.component';
-import { SmartTableComponent } from './smart-table/smart-table.component';
 import { UploadModule } from './../upload/upload.module';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { SafeStylePipe, SectionComponent } from './section/section.component';
 import { SelectWSBComponent } from './select-wsb/select-wsb.component';
 import { AccountComponent } from './account/account.component';
@@ -42,7 +40,6 @@ const PAGES_COMPONENTS = [
   SelectWSBComponent,
   BoxComponent,
   EditorComponent,
-  SmartTableComponent,
   LayoutComponent,
   HeaderComponent,
   SearchInputComponent,
@@ -95,7 +92,6 @@ const monacoConfig: NgxMonacoEditorConfig = {
     WorkspaceRoutingModule,
     ThemeModule,
     AuthModule,
-    Ng2SmartTableModule,
     NbAccordionModule,
     UploadModule,
     DragDropModule,

@@ -50,9 +50,6 @@
 <ngx-box *ngIf="section && box && box.url" [box]="box" [sectionId]="section.id"
   [workspaceId]="auth.getCurrentWorkSpace()._id" (backAction)="back()">
 </ngx-box>
-<ngx-smart-table *ngIf="section && box && box.smartTable" [box]="box" [sectionId]="section.id"
-  [workspaceId]="auth.getCurrentWorkSpace()._id" (backAction)="back()">
-</ngx-smart-table>
 <ng-template #contentTemplate let-data let-ref="dialogRef">
   <nb-card>
     <nb-card-body [formGroup]="createBoxForm">
@@ -88,13 +85,13 @@
             <input type="text" nbInput fullWidth formControlName="urlBg" placeholder="My box background" required
               [status]="createBoxForm.controls['urlBg'].errors && createBoxForm.controls['urlBg'].dirty? 'danger' : ''">
           </div>
-    
+
           <div class="input-group">
             <p class="label-account font-weight-bold text-muted mb-1">Source URL</p>
             <input type="text" nbInput fullWidth formControlName="url" placeholder="My box source url" required
               [status]="createBoxForm.controls['url'].errors && createBoxForm.controls['url'].dirty? 'danger' : ''">
           </div>
-    
+
           <div class="input-group">
             <nb-checkbox formControlName="iframe">iframe</nb-checkbox>
           </div>
@@ -120,7 +117,7 @@
         </nb-tab>
        </nb-tabset>
 
-      
+
     </nb-card-body>
     <nb-card-footer>
       <div class="row">

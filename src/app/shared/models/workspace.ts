@@ -9,7 +9,6 @@ interface IBox {
   iframe?: boolean;
   hideElements?: string[];
   login?: ILogin;
-  smartTable?: ISmartTable;
   cors?: string;
   class?: string;
   injectCSS?: string;
