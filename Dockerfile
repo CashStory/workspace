@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-ENV VERSION 1.2.4
+ENV VERSION 1.2.5
 LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.name="Workspace Front" \
   org.label-schema.description="Frontend of cashstory" \
