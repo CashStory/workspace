@@ -11,7 +11,7 @@ export class SpeechService {
   recognitionObs: Observable<string>;
 
   record(lang: string): Observable<string> {
-    this.recognitionObs = Observable.create((observe) => {
+    this.recognitionObs = new Observable((observe) => {
       if (this.recognition) {
         this.stop();
       } else {

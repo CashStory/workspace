@@ -10,6 +10,10 @@ const routes: Routes = [{
   component: WorkspaceComponent,
   children: [
     {
+      path: 'account',
+      component: AccountComponent,
+    },
+    {
       path: '',
       component: SelectWSBComponent,
     },
@@ -19,6 +23,14 @@ const routes: Routes = [{
     },
     {
       path: ':workspace/dashboard',
+      component: SelectWSBComponent,
+    },
+    {
+      path: ':workspace/share',
+      component: SelectWSBComponent,
+    },
+    {
+      path: ':workspace/section/:section',
       component: SelectWSBComponent,
     },
     {
@@ -33,10 +45,6 @@ const routes: Routes = [{
       path: '',
       redirectTo: '/',
       pathMatch: 'full',
-    },
-    {
-      path: 'account',
-      component: AccountComponent,
     },
   ],
 }];

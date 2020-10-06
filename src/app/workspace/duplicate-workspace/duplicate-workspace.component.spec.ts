@@ -6,7 +6,7 @@ describe('DuplicateWorkspaceComponent', () => {
   let component: DuplicateWorkspaceComponent;
   let fixture: ComponentFixture<DuplicateWorkspaceComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [DuplicateWorkspaceComponent],
     })

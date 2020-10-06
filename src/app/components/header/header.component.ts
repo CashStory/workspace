@@ -9,6 +9,8 @@ import { IWp } from '../../shared/models/workspace';
 import { Router } from '@angular/router';
 import hotkeysJs from 'hotkeys-js';
 import { WorkspaceService } from '../../services/workspace.service';
+import { ShareWorkspaceComponent } from '../../workspace/share-workspace/share-workspace.component';
+
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
@@ -119,5 +121,9 @@ export class HeaderComponent implements OnInit {
 
   openSearch() {
     this.searchService.activateSearch('rotate-layout');
+  }
+
+  openShare() {
+    this.dialogService.open(ShareWorkspaceComponent, { hasScroll: true });
   }
 }

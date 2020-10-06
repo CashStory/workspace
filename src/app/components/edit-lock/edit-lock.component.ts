@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { IUser } from '../../shared/models/user';
 import { AuthService } from '../../services/auth.service';
-import { NbDialogService, NbDialogRef, NbToastrService } from '@nebular/theme';
+import { NbDialogService } from '@nebular/theme';
 import { DuplicateWorkspaceComponent } from '../../workspace/duplicate-workspace/duplicate-workspace.component';
 import { ActivatedRoute } from '@angular/router';
 import { WorkspaceService } from '../../services/workspace.service';
@@ -35,8 +35,13 @@ export class EditLockComponent implements OnInit {
     });
   }
 
-  toggleLock() {
-    if (this.user.role !== 'admin' && (this.currWsDetails.creatorId !== this.user._id)) {
+  async toggleLock() {
+    const shareData = await this.currWsDetails.shared_users.some((e) => {
+      if (e.email === this.user.email && e.role === 'edit') {
+        return true;
+      }
+    });
+    if (((this.user.role !== 'admin' && this.currWsDetails.creatorId !== this.user._id && await !shareData))) {
       this.dialogService.open(DuplicateWorkspaceComponent);
     } else {
       this.isEdit = !this.isEdit;

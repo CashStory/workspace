@@ -1,0 +1,29 @@
+.toggle {
+  float: right;
+  font-weight: bolder;
+  padding-left: 100px;
+  cursor: pointer;
+}
+.enable-link {
+  color: red;
+}
+.disable-link {
+  color: #32a0da;
+}
+.share-btn {
+  float: right;
+}
+.delete-user {
+  margin-right: 2px;
+  color: red;
+  font-size: larger;
+}
+nb-list {
+  height: 222px;
+}
+.error {
+  color: red;
+}
+.link {
+  text-transform: lowercase;
+}
