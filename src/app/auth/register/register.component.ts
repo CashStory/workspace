@@ -51,8 +51,17 @@ export class RegisterComponent implements OnInit {
   constructor(private auth: AuthService,
               private toast: NbToastrService,
               protected router: Router) {
+                this.user = {
+                  full_name: '',
+                  email: '',
+                  password: '',
+                  confirmPassword: '',
+                  terms: false,
+                };
   }
   ngOnInit() {
+    console.log('this.user', this.user);
+
     this.auth.getActiveSaml().subscribe((res) => {
       this.activeSamlAuth = res;
     });
