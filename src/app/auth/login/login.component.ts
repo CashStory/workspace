@@ -8,14 +8,13 @@ import { environment } from '../../../environments/environment';
 import platformDetect from 'platform-detect';
 
 @Component({
-  selector: 'ngx-app-login',
+  selector: 'ngx-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   user: ILogin = { username: null, password: null };
   sub: any;
-  landingUrl = environment.landingUrl;
   passwordType = 'password';
   web = platformDetect.web;
   activeSamlAuth: [] = [];
