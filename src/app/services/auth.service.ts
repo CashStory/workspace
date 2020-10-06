@@ -437,7 +437,9 @@ export class AuthService {
     this.currentWorkspaceObs.next(null);
     this.currentUserObs.next(null);
     this.isAdmin = false;
-    this.router.navigate(['/auth/login']);
+    if (window.location.href.indexOf('/auth/login') == -1 && window.location.href.indexOf('/auth/register') == -1) {
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   decodeUserFromToken(token: string) {
