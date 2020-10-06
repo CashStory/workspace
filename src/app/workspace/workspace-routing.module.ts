@@ -26,6 +26,14 @@ const routes: Routes = [{
       component: SelectWSBComponent,
     },
     {
+      path: ':workspace/share',
+      component: SelectWSBComponent,
+    },
+    {
+      path: ':workspace/section/:section',
+      component: SelectWSBComponent,
+    },
+    {
       path: ':workspace/section/:section',
       component: SelectWSBComponent,
     },

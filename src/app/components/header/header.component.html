@@ -25,6 +25,10 @@
       [nbContextMenu]="workSpacesMenu" nbContextMenuTrigger="click">
       <nb-icon icon="window-restore" class="fa-2x"></nb-icon>
     </nb-action>
+    <nb-action *ngIf="this.isDuplicateWS" class="control-item btn">
+      <button nbButton size="large" class="share-btn" (click)="openShare()">
+        <i class="fas fa-user-friends"></i>&nbsp;Share</button>
+    </nb-action>
     <nb-action>
       <nb-user [name]="showFirstName()" [picture]="upload.getImage(user?.picture)"
         (click)="this.router.navigate(['/account'])">

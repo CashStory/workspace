@@ -54,6 +54,12 @@
   .logo a:hover {
     text-decoration: none;
   }
+  .share-btn {
+    background-color:#fbc117;
+  }
+  .share-btn:hover {
+    background-color: #fbc217ce;
+  }
 }
 
 ::ng-deep nb-context-menu {

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { take, skip } from 'rxjs/operators';
 import { IWp } from '../../shared/models/workspace';
+import { WorkspaceService } from '../../services/workspace.service';
 
 @Component({
   selector: 'ngx-select-wsb',
@@ -26,6 +27,7 @@ export class SelectWSBComponent implements OnInit, OnDestroy {
     private router: Router,
     private focusService: FocusService,
     private fullscreenLockService: FullscreenLockService,
+    private wsServices: WorkspaceService,
   ) {
     this.isDash = true;
     this.route.queryParams
@@ -89,6 +91,23 @@ export class SelectWSBComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(async (currentWp) => {
         this.subRoute = this.route.params.subscribe(async (params) => {
+          if (location.href.indexOf('share') > -1) {
+            if (params.workspace !== currentWp.id) {
+              await this.wsServices.getById(params.workspace).subscribe(async (res: any) => {
+                if (res.linkShared) {
+                  this.isDash = true;
+                  await this.setWp(params.workspace)
+                  .then(() => {
+                    this.setSB(null, null);
+                  });
+                  this.router.navigate([`/`]);
+                } else {
+                  this.router.navigate([`/`]);
+                }
+              });
+            }
+          }
+
           const workspaceId = params.workspace;
           if (!workspaceId && currentWp) {
             this.router.navigate([`/${currentWp.id}/dashboard`]);

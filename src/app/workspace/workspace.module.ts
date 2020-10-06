@@ -31,6 +31,7 @@ import {
 } from '../components';
 import { ThemeModule } from '../@theme/theme.module';
 import { LayoutComponent } from '../components/layout';
+import { ShareWorkspaceComponent } from './share-workspace/share-workspace.component';
 
 const PAGES_COMPONENTS = [
   WorkspaceComponent,
@@ -54,6 +55,7 @@ const PAGES_COMPONENTS = [
 const ENTRY_COMPONENTS = [
   UploadCardComponent,
   DuplicateWorkspaceComponent,
+  ShareWorkspaceComponent,
 ];
 
 export function onMonacoLoad() {

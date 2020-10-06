@@ -364,7 +364,7 @@ export class SectionComponent implements OnInit, OnDestroy {
     this.IsEditMode = (mode || false);
     this.DialogRef = this.dialogService.open(
       this.contentTemplate,
-      { closeOnEsc: true },
+      { closeOnEsc: true , hasScroll: true  },
     );
     this.createForm(mode);
   }
