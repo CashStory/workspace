@@ -41,7 +41,7 @@ export class EditLockComponent implements OnInit {
         return true;
       }
     });
-    if (((this.user.role !== 'admin' && this.currWsDetails.creatorId !== this.user._id && await !shareData))) {
+    if (this.user.role !== 'admin' && this.currWsDetails.creatorId !== this.user._id && await !shareData) {
       this.dialogService.open(DuplicateWorkspaceComponent, { hasScroll: true });
     } else {
       this.isEdit = !this.isEdit;
