@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.auth.currentUserObs.pipe(take(1))
       .subscribe((user) => {
         if (user) {
-          this.router.navigate(['/workspace']);
+          this.router.navigate(['/']);
         }
       });
     this.auth.getActiveSaml().subscribe((res) => {
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.user)
       .subscribe((res) => {
-        this.router.navigate(['/workspace']);
+        this.router.navigate(['/']);
       }, (error) => {
         this.toast.show(`Invalid email or password!`, 'Sorry', { status: 'danger' });
         console.error('error', error);
