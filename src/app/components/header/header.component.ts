@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.sidebarService.collapse('menu-sidebar');
     this.getUser();
     this.nbMenuService.onItemClick()
@@ -94,6 +94,7 @@ export class HeaderComponent implements OnInit {
   }
 
   changeDashboard(wp: IWp) {
+    this.ws = wp;
     this.router.navigate([`/${wp.id}/dashboard`]);
   }
 
@@ -101,14 +102,25 @@ export class HeaderComponent implements OnInit {
     return Object.keys(this.user.workspaces).length;
   }
 
-  // fonction who get logged user info
-  getUser() {
-    this.auth.currentUserObs.subscribe((user) => {
+  // function gets logged in user info
+  async getUser() {
+    await this.auth.currentUserObs.subscribe((user) => {
       this.user = user;
       this.workSpacesMenu = [];
       if (this.user) {
         for (const [key, workspace] of Object.entries(this.user.workspaces)) {
           this.workSpacesMenu.push({ title: workspace.name, link: key  });
+        }
+        if (!this.ws) {
+          this.ws = this.user.workspaceCurrent;
+          this.wsp.getById(this.user.workspaceCurrent.id)
+            .subscribe((workspace) => {
+              if (workspace.creatorId === this.user._id) {
+                this.isDuplicateWS = true;
+              } else {
+                this.isDuplicateWS = false;
+              }
+            });
         }
       }
     });
