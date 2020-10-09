@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NbToastrService } from '@nebular/theme';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'ngx-register',
@@ -9,6 +10,7 @@ import { NbToastrService } from '@nebular/theme';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
+  ApiUrl = environment.api;
 
   showMessages: any = {
     success: true,
@@ -16,6 +18,11 @@ export class RegisterComponent implements OnInit {
   };
   validation = {
     password: {
+      required: true,
+      minLength: 4,
+      maxLength: 50,
+    },
+    confirmPassword: {
       required: true,
       minLength: 4,
       maxLength: 50,
@@ -53,14 +60,23 @@ export class RegisterComponent implements OnInit {
   register(): void {
     this.errors = this.messages = [];
     this.submitted = true;
-
-    this.auth.login(this.user)
+    this.auth.register(this.user)
     .subscribe((res) => {
-      this.router.navigate(['/workspace']);
+      this.toast.show('Registred succesfully!', 'Success!', { status: 'success' });
+      this.auth.login({ username: this.user.email, password: this.user.password })
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      }, (error) => {
+        this.toast.show(`Invalid email or password!`, 'Sorry', { status: 'danger' });
+      });
     }, (error) => {
-      this.toast.show(`Invalid email or password!`, 'Sorry', { status: 'danger' });
-      console.error('error', error);
+      this.toast.show(error.error.message, 'Sorry', { status: 'danger' });
+      this.submitted = false;
     });
+  }
+
+  redirectToSSO(samlVendor: string) {
+    window.location.href = `${environment.api}/auth/${samlVendor}`;
   }
 
 }

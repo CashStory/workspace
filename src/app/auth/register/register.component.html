@@ -71,23 +71,23 @@
         [status]="rePass.dirty ? (rePass.invalid || password.value != rePass.value  ? 'danger' : 'success') : 'basic'"
         [required]="validation.password.required" [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null"
         >
-      <ng-container *ngIf="rePass.invalid && rePass.touched">
+      <ng-container *ngIf="(rePass.invalid && rePass.touched) || (password.value != rePass.value)">
         <p class="caption status-danger" *ngIf="rePass.errors?.required">
           Password confirmation is required!
         </p>
-        <p class="caption status-danger" *ngIf="password.value != rePass.value && !rePass.errors?.required">
+        <p class="caption status-danger" *ngIf="password.value != rePass.value">
           Password does not match the confirm password.
         </p>
       </ng-container>
     </div>
 
-    <div class="form-control-group accept-group">
+    <div class="form-control-group accept-group terms">
       <nb-checkbox name="terms" [(ngModel)]="user.terms" required>
         Agree to <a href="#" target="_blank"><strong>Terms &amp; Conditions</strong></a>
       </nb-checkbox>
     </div>
 
-    <button nbButton fullWidth status="primary" size="large" [disabled]="submitted || !form.valid"
+    <button nbButton fullWidth status="primary" size="large" [disabled]="submitted || !form.valid || (password.value != rePass.value) || !user.terms"
       [class.btn-pulse]="submitted">
       Register
     </button>
@@ -102,7 +102,7 @@
     </div>
   </section>
 
-  <section class="another-action" aria-label="Sign in">
+  <section class="sign-in" aria-label="Sign in">
     Already have an account? <a class="text-link" routerLink="../login">Log in</a>
   </section>
 </div>

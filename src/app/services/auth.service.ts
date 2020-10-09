@@ -330,6 +330,10 @@ export class AuthService {
     return this.http.post<any>(`${environment.api}/auth/login`, credentials);
   }
 
+  register(userData: IUser): Observable<any> {
+    return this.http.post<any>(`${environment.api}/register`, userData);
+  }
+
   private getDecodeUser() {
     return new Promise((resolve, reject) => {
       if (this.token) {
