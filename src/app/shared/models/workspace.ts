@@ -61,6 +61,7 @@ interface ISection {
   box: IBox[];
 }
 export interface IWorkspace {
+  linkShared: any;
   _id?: string;
   name: string;
   creatorId: string;

@@ -36,7 +36,7 @@ export class EditLockComponent implements OnInit {
   }
 
   async toggleLock() {
-    const shareData = await this.currWsDetails.shared_users.some((e) => {
+    const shareData = await this.currWsDetails.shared_users?.some((e) => {
       if (e.email === this.user.email && e.role === 'edit') {
         return true;
       }
