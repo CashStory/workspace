@@ -1,5 +1,5 @@
 <nb-card accent="info">
-        <nb-card-header><h4><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Share workspace with people</h4></nb-card-header>
+        <nb-card-header><h4><em class="fas fa-user-plus"></em>&nbsp;&nbsp;Share workspace with people</h4></nb-card-header>
         <nb-card-body>
             <input type="email" nbInput status="info" [(ngModel)]="shareEmail" placeholder="eg. example@example.com">&nbsp;&nbsp;
             <nb-checkbox (checkedChange)="toggleEditor($event)" nbTooltip="Heads Up! Be aware that enabling editor option allows the assigned user to edit your workspace." bTooltipPlacement="right" nbTooltipStatus="danger">Editor</nb-checkbox>
@@ -7,7 +7,7 @@
             <p class="error"> {{errorMsg}} </p>
             <nb-list class="shared-list">
                 <nb-list-item *ngFor="let share of workspace?.shared_users">
-                <button nbButton size="small" (click)="removeShare(share.email)"><i class="fas fa-minus-square delete-user"></i></button>
+                <button nbButton size="small" (click)="removeShare(share.email)"><em class="fas fa-minus-square delete-user"></em></button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <nb-user name="{{share.email}}" title="{{share.role}}"></nb-user>
                 </nb-list-item>
@@ -16,10 +16,10 @@
       </nb-card>
 
       <nb-card>
-        <nb-card-header><h4><i class="fas fa-link"></i>&nbsp;&nbsp; Share workspace link</h4></nb-card-header>
+        <nb-card-header><h4><em class="fas fa-link"></em>&nbsp;&nbsp; Share workspace link</h4></nb-card-header>
         <nb-card-body>
-            <p>If enabled, <b>Anyone</b> with this link can use this workspace <span class="toggle enable-link" (click)="toggleLink()" *ngIf="!this.workspace.linkShared"> Enable Link Sharing </span>
-            <span class="toggle disable-link" (click)="toggleLink()" *ngIf="this.workspace.linkShared"> Disable Link Sharing </span></p> 
-            <span *ngIf="this.workspace.linkShared"> Shareable Link : <a href="{{shareablelink}}" target="_blank">{{shareablelink}}</a> </span>
+            <p>If enabled, <strong>Anyone</strong> with this link can use this workspace <span class="toggle enable-link" (click)="toggleLink()" *ngIf="!this.workspace?.linkShared"> Enable Link Sharing </span>
+            <span class="toggle disable-link" (click)="toggleLink()" *ngIf="this.workspace?.linkShared"> Disable Link Sharing </span></p> 
+            <span *ngIf="this.workspace?.linkShared"> Shareable Link : <a href="{{shareablelink}}" target="_blank">{{shareablelink}}</a> </span>
         </nb-card-body>
       </nb-card>
