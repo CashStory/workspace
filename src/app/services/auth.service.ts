@@ -323,7 +323,7 @@ export class AuthService {
   }
 
   register(userData: IUser): Observable<any> {
-    return this.http.post<any>(`${environment.api}/register`, userData);
+    return this.http.post<any>(`${environment.api}/auth/register`, userData);
   }
 
   private getDecodeUser() {
