@@ -2,7 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 1.2.3b0 (2020-10-05)
+## 1.3.0 (2020-10-06)
+
+### Feat
+
+- add register module
+- :sparkles: add register form
+
+## 1.2.10 (2020-10-05)
+
+### Fix
+
+- fix for linters
+
+## 1.2.9 (2020-10-05)
+
+### Fix
+
+- :fire: remove jsonmodel in run for now
+
+## 1.2.8 (2020-10-05)
+
+### Fix
+
+- :construction_worker: fix bump in ci dont overwrite version
+
+## 1.2.7 (2020-10-05)
+
+### Fix
+
+- :recycle: chnage name for snake case in package
+
+## 1.2.6 (2020-10-05)
+
+### Fix
+
+- eslint version support
+
+## 1.2.5 (2020-10-05)
+
+### Fix
+
+- remove old useless dep
+
+## 1.2.4 (2020-10-05)
+
+### Fix
+
+- :art: add back gtag with a way to disable it
 
 ## 1.2.3 (2020-10-05)
 

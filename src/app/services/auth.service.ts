@@ -13,6 +13,7 @@ import * as stringSimilarity from 'string-similarity';
 import { IFavorite } from '../shared/models/favorite';
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup } from '@angular/forms';
+import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 declare global {
   interface Window { dataLayer: {}[]; }
@@ -26,7 +27,6 @@ export function authScheme() {
   return localStorage.getItem('authScheme');
 }
 
-window.dataLayer = window.dataLayer || [];
 @Injectable({
   providedIn: 'root',
 })
@@ -48,6 +48,7 @@ export class AuthService {
     private cookieService: CookieService,
     private router: Router,
     private workspaceService: WorkspaceService,
+    private gtmService: GoogleTagManagerService,
     private jwtHelper: JwtHelperService) {
     if (authScheme() == null) {
       localStorage.setItem('authScheme', 'Bearer ');
@@ -321,6 +322,10 @@ export class AuthService {
     return this.http.post<any>(`${environment.api}/auth/login`, credentials);
   }
 
+  register(userData: IUser): Observable<any> {
+    return this.http.post<any>(`${environment.api}/auth/register`, userData);
+  }
+
   private getDecodeUser() {
     return new Promise((resolve, reject) => {
       if (this.token) {
@@ -436,7 +441,9 @@ export class AuthService {
     this.currentWorkspaceObs.next(null);
     this.currentUserObs.next(null);
     this.isAdmin = false;
-    this.router.navigate(['/auth/login']);
+    if (window.location.href.indexOf('/auth/login') === -1 && window.location.href.indexOf('/auth/register') === -1) {
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   decodeUserFromToken(token: string) {
@@ -462,19 +469,23 @@ export class AuthService {
       }
       this.loggedIn = true;
       this.isAdmin = user.role === 'admin' ? true : false;
-      window.dataLayer.push({
-        event: 'eventGA',
-        eventCategory: 'Account',
-        eventAction: 'Login',
-        eventLabel: user._id,
-      });
+      if (environment.gtm_id) {
+        this.gtmService.pushTag({
+          event: 'eventGA',
+          eventCategory: 'Account',
+          eventAction: 'Login',
+          eventLabel: user._id,
+        });
+      }
     } else {
-      window.dataLayer.push({
-        user: {
-          userId: this.loggedIn ? user._id : undefined,
-          loginState: this.loggedIn,
-        },
-      });
+      if (environment.gtm_id) {
+        this.gtmService.pushTag({
+          user: {
+            userId: this.loggedIn ? user._id : undefined,
+            loginState: this.loggedIn,
+          },
+        });
+      }
     }
     this.currentUserObs.next(user);
     this._User = user;

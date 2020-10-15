@@ -64,6 +64,7 @@ export function jwtOptionsFactory() {
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: 'googleTagManagerId',  useValue: environment.gtm_id },
     AuthService,
     EnvService,
     UploadService,

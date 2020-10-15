@@ -20,6 +20,7 @@ export const environment = {
   info,
   production: window.__env.production,
   api: window.__env.api,
+  gtm_id: window.__env.gtm_id,
   landingUrl: window.__env.landingUrl,
   whitelistedDomains: window.__env.whitelistedDomains,
   crispWebsiteId: window.__env.crispWebsiteId,

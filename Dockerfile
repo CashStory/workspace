@@ -1,6 +1,5 @@
 FROM node:lts-alpine
-
-ENV VERSION 1.2.3b0
+ENV VERSION 1.3.0
 LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.name="Workspace Front" \
   org.label-schema.description="Frontend of cashstory" \
@@ -25,7 +24,7 @@ COPY . /app/
 RUN npm i
 
 # build server
-RUN npm start jsonModel
+RUN npm start json_model
 RUN npm start build
 
 CMD [ "node", "serve.js" ]

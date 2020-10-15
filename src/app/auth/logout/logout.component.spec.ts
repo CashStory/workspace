@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutComponent } from './logout.component';
 import { AuthService } from '../../services/auth.service';
@@ -12,7 +12,7 @@ describe('LogoutComponent', () => {
     logout: any,
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     authServiceStub = {
       loggedIn: true,
       logout: (function () {

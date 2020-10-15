@@ -3,6 +3,7 @@
 
   // API url
   window.__env.production = true;
+  window.__env.gtm_id = null;
   window.__env.api = 'https://api.cashstory.com/api/v1';
   window.__env.landingUrl = 'https://cashstory.com';
   window.__env.whitelistedDomains = ['api.cashstory.com'];

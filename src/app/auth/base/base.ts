@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'ngx-base',

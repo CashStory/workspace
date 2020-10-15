@@ -2,7 +2,7 @@ const npsUtils=require('nps-utils');
 
 module.exports= {
     scripts: {
-        default: npsUtils.series.nps('conf.init', 'jsonModel', 'run'),
+        default: npsUtils.series.nps('conf.init', 'run'),
         run: 'ng serve --proxy-config proxy.conf.json --open',
         build:  'ng build --configuration=master',
         serve: 'node serve.js',
@@ -40,8 +40,8 @@ module.exports= {
             style2: 'sass-lint \"src/**/**.s+(a|c)ss\" -v',
             fix: 'tslint --format verbose --project tsconfig.json --config tslint.json --fix',
         },
-        jsonModel: {
-          default: npsUtils.series.nps('jsonModel.workspace', 'jsonModel.user'),
+        json_model: {
+          default: npsUtils.series.nps('json_model.workspace', 'json_model.user'),
           user: "ts-json-schema-generator --path 'src/app/shared/models/user.ts' > src/app/shared/user_models.json",
           workspace: "ts-json-schema-generator --path 'src/app/shared/models/workspace.ts' > src/app/shared/workspace_models.json",
         },
