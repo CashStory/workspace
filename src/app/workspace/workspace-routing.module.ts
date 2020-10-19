@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { WorkspaceComponent } from './workspace.component';
-import { RequestAccessComponent } from './request-access/request-access.component';
 
 const routes: Routes = [{
   path: '',
