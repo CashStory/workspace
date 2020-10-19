@@ -13,6 +13,8 @@ import * as stringSimilarity from 'string-similarity';
 import { IFavorite } from '../shared/models/favorite';
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup } from '@angular/forms';
+import { NbDialogService } from '@nebular/theme';
+import { RequestAccessComponent } from 'app/workspace/request-access/request-access.component';
 
 declare global {
   interface Window { dataLayer: {}[]; }
@@ -48,6 +50,7 @@ export class AuthService {
     private cookieService: CookieService,
     private router: Router,
     private workspaceService: WorkspaceService,
+    private dialogService: NbDialogService,
     private jwtHelper: JwtHelperService) {
     if (authScheme() == null) {
       localStorage.setItem('authScheme', 'Bearer ');
@@ -86,6 +89,12 @@ export class AuthService {
               this._Workspace = workspace;
               this.feedWpWithLogoANdName();
               this.currentWorkspaceObs.next(workspace);
+            },
+            (err) => {
+              if (err.status === 401) {
+                this.dialogService.open(RequestAccessComponent,
+                  { hasScroll: true, closeOnEsc: false, closeOnBackdropClick: false, hasBackdrop: false });
+              }
             });
         }
       }

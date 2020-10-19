@@ -30,6 +30,7 @@ import { SmartTableService } from './services/smart-table.service';
 import { EnvService } from './services/env.service';
 import { ThemeModule } from './@theme/theme.module';
 import { CookieService } from 'ngx-cookie-service';
+import { RequestAccessComponent } from './workspace/request-access/request-access.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -42,6 +43,7 @@ export function jwtOptionsFactory() {
 @NgModule({
   declarations: [
     AppComponent,
+    RequestAccessComponent,
   ],
   imports: [
     BrowserModule,
