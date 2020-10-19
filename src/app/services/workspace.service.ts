@@ -44,6 +44,10 @@ export class WorkspaceService {
     return this.http.post<IWorkspace>(`${environment.api}/workspaces/share/${id}`, shareData);
   }
 
+  addRequest(requestData: any): Observable<IWorkspace> {
+    return this.http.post<IWorkspace>(`${environment.api}/workspaces/request`, requestData);
+  }
+
   deleteShare(id: string, email: string): Observable<IWorkspace> {
     return this.http.delete<IWorkspace>(`${environment.api}/workspaces/share/${id}/${email}`);
   }
