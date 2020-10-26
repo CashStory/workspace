@@ -11,6 +11,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+              "allowedCommonJsDependencies": [
+                "lodash",
+                "xlsx",
+                "file-saver"
+            ],
             "preserveSymlinks": true,
             "outputPath": "dist/public",
             "index": "src/index.html",

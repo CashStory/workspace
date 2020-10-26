@@ -58,6 +58,7 @@
     "jest": "^26.5.0",
     "jest-puppeteer": "^4.4.0",
     "jsonwebtoken": "^8.5.0",
+    "lodash-es": "^4.17.15",
     "ngx-color-picker": "^9.1.0",
     "ngx-cookie-service": "^2.3.0",
     "ngx-filesaver": "^8.1.0",
