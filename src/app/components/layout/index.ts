@@ -36,6 +36,60 @@ import hotkeysJs from 'hotkeys-js';
       <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
+      <nb-sidebar class="theme-sidebar"
+                   tag="theme-sidebar"
+                   responsive
+                   state="compacted"
+                   [end]="true">
+            <div *ngIf="themeSidebar">
+            <div (click)="toggleThemebar()">
+                <h6>Templates
+                  <em class="fas fa-times" style="float:right;"></em>
+                </h6>
+                <hr/>
+            </div>
+            <nb-card>
+              <nb-card-body class="theme-card">
+                <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
+                </div>
+                <h6 class="theme-name">Sales</h6>
+              </nb-card-body>
+            </nb-card>
+
+            <nb-card>
+            <nb-card-body class="theme-card">
+              <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
+              </div>
+              <h6 class="theme-name">Tech</h6>
+            </nb-card-body>
+          </nb-card>
+
+          <nb-card>
+          <nb-card-body class="theme-card">
+            <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
+            </div>
+            <h6 class="theme-name">Business Operations</h6>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card>
+        <nb-card-body class="theme-card">
+          <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
+          </div>
+          <h6 class="theme-name">Business Situation Room</h6>
+        </nb-card-body>
+      </nb-card>
+
+      <nb-card>
+      <nb-card-body class="theme-card">
+        <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
+        </div>
+        <h6 class="theme-name">World Situation Room</h6>
+      </nb-card-body>
+      </nb-card>
+      </div>
+      </nb-sidebar>
+
       <nb-layout-column [class]="getClass()">
         <ng-content select="router-outlet"></ng-content>
       </nb-layout-column>
@@ -45,6 +99,9 @@ import hotkeysJs from 'hotkeys-js';
       <ngx-floating-button-item (click)="unFocus()" icon="compress-alt" status="basic" label="Back to bob" color="white"></ngx-floating-button-item>
       <!--Here We can Configure N number of Floating buttons-->
     </ngx-floating-button>
+    <div class="theme-holder" (click)="toggleThemebar()" *ngIf="!themeSidebar">
+    <em class="fas fa-angle-left" style="font-size: large;"></em>
+  </div>
   `,
 })
 export class LayoutComponent implements OnDestroy, OnInit {
@@ -65,6 +122,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
   ];
   layout: any = {};
   sidebar: any = {};
+  themeSidebar: boolean = false;
 
   private alive = true;
 
@@ -105,6 +163,11 @@ export class LayoutComponent implements OnDestroy, OnInit {
         }
       });
 
+  }
+
+  toggleThemebar() {
+    this.sidebarService.toggle(true, 'theme-sidebar');
+    this.themeSidebar = !this.themeSidebar;
   }
 
   async unFocusAndSearch() {
