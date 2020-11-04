@@ -56,4 +56,8 @@ export class WorkspaceService {
     return this.http.post<IWorkspace>(`${environment.api}/workspaces/share/${id}/link`, '');
   }
 
+  getTemplates(): Observable<any> {
+    return this.http.get<IWorkspace>(`${environment.api}/workspaces/templates`);
+  }
+
 }

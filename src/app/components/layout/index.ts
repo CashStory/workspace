@@ -3,6 +3,8 @@ import { FullscreenLockService } from '../../services/fullscreen-lock.service';
 import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { delay, withLatestFrom, takeWhile } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
+import { WorkspaceService } from '../../services/workspace.service';
+
 import {
   NbMediaBreakpoint,
   NbMediaBreakpointsService,
@@ -48,45 +50,18 @@ import hotkeysJs from 'hotkeys-js';
                 </h6>
                 <hr/>
             </div>
+
+            <div *ngFor="let template of templatelist">
             <nb-card>
               <nb-card-body class="theme-card">
-                <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
+                <div class="theme-preview" style="background:url('{{template.logo.url}}')">
                 </div>
-                <h6 class="theme-name">Sales</h6>
+                <h6 class="theme-name">{{template.name}}</h6>
               </nb-card-body>
             </nb-card>
-
-            <nb-card>
-            <nb-card-body class="theme-card">
-              <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
-              </div>
-              <h6 class="theme-name">Tech</h6>
-            </nb-card-body>
-          </nb-card>
-
-          <nb-card>
-          <nb-card-body class="theme-card">
-            <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
             </div>
-            <h6 class="theme-name">Business Operations</h6>
-          </nb-card-body>
-        </nb-card>
 
-        <nb-card>
-        <nb-card-body class="theme-card">
-          <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
-          </div>
-          <h6 class="theme-name">Business Situation Room</h6>
-        </nb-card-body>
-      </nb-card>
-
-      <nb-card>
-      <nb-card-body class="theme-card">
-        <div class="theme-preview" style="background:url('./assets/templates/template-preview.png')">
-        </div>
-        <h6 class="theme-name">World Situation Room</h6>
-      </nb-card-body>
-      </nb-card>
+            
       </div>
       </nb-sidebar>
 
@@ -105,10 +80,14 @@ import hotkeysJs from 'hotkeys-js';
   `,
 })
 export class LayoutComponent implements OnDestroy, OnInit {
+  templatelist;
   currentWs: IWp;
   ngOnInit() {
     this.auth.currentWpObs.subscribe((workspaceCurrent) => {
       this.currentWs = workspaceCurrent;
+    });
+    this.wss.getTemplates().subscribe((templates) => {
+      this.templatelist = templates;
     });
     hotkeysJs('escape', (event) => {
       this.unFocus();
@@ -149,7 +128,8 @@ export class LayoutComponent implements OnDestroy, OnInit {
     public searchService: NgxSearchService,
     public focusService: FocusService,
     public fullscreenLockService: FullscreenLockService,
-    private auth: AuthService) {
+    private auth: AuthService,
+    private wss: WorkspaceService) {
     const isBp = this.bpService.getByName('is');
     this.menuService.onItemSelect()
       .pipe(
