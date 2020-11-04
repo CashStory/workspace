@@ -60,8 +60,6 @@ import hotkeysJs from 'hotkeys-js';
               </nb-card-body>
             </nb-card>
             </div>
-
-            
       </div>
       </nb-sidebar>
 
