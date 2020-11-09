@@ -56,7 +56,7 @@ import hotkeysJs from 'hotkeys-js';
             <div *ngFor="let template of templatelist">
             <nb-card (click)="chooseTheme(template._id)">
               <nb-card-body class="theme-card">
-                <div class="theme-preview" style="background:url('{{template.logo.url}}')">
+                <div class="theme-preview" style="background:url('assets/templates/{{template.template_preview}}')">
                 </div>
                 <h6 class="theme-name">{{template.name}}</h6>
               </nb-card-body>
@@ -153,9 +153,6 @@ export class LayoutComponent implements OnDestroy, OnInit {
         templateId: id,
       },
     });
-    // this.wss.applyTemplate(id).subscribe((resp)=>{
-    //   console.log(resp)
-    // })
   }
 
   toggleThemebar() {
