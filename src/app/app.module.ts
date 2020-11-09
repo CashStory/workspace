@@ -31,6 +31,7 @@ import { EnvService } from './services/env.service';
 import { ThemeModule } from './@theme/theme.module';
 import { CookieService } from 'ngx-cookie-service';
 import { RequestAccessComponent } from './workspace/request-access/request-access.component';
+import { TemplateApplyComponent } from './workspace/template-apply/template-apply.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -44,6 +45,7 @@ export function jwtOptionsFactory() {
   declarations: [
     AppComponent,
     RequestAccessComponent,
+    TemplateApplyComponent,
   ],
   imports: [
     BrowserModule,

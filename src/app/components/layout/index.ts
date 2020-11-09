@@ -4,8 +4,10 @@ import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { delay, withLatestFrom, takeWhile } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import { WorkspaceService } from '../../services/workspace.service';
+import { TemplateApplyComponent } from '../../workspace/template-apply/template-apply.component';
 
 import {
+  NbDialogService,
   NbMediaBreakpoint,
   NbMediaBreakpointsService,
   NbMenuItem,
@@ -52,7 +54,7 @@ import hotkeysJs from 'hotkeys-js';
             </div>
 
             <div *ngFor="let template of templatelist">
-            <nb-card>
+            <nb-card (click)="chooseTheme(template._id)">
               <nb-card-body class="theme-card">
                 <div class="theme-preview" style="background:url('{{template.logo.url}}')">
                 </div>
@@ -127,6 +129,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
     public focusService: FocusService,
     public fullscreenLockService: FullscreenLockService,
     private auth: AuthService,
+    private dialogService: NbDialogService,
     private wss: WorkspaceService) {
     const isBp = this.bpService.getByName('is');
     this.menuService.onItemSelect()
@@ -141,6 +144,18 @@ export class LayoutComponent implements OnDestroy, OnInit {
         }
       });
 
+  }
+
+  chooseTheme(id) {
+    this.dialogService.open(TemplateApplyComponent, {
+      hasScroll: true,
+      context: {
+        templateId: id,
+      },
+    });
+    // this.wss.applyTemplate(id).subscribe((resp)=>{
+    //   console.log(resp)
+    // })
   }
 
   toggleThemebar() {
