@@ -63,5 +63,4 @@ export class WorkspaceService {
   applyTemplate(id, wpName): Observable<any> {
     return this.http.post<IWorkspace>(`${environment.api}/workspaces/templates/${id}`, wpName);
   }
-
 }
