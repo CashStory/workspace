@@ -9,7 +9,17 @@ All notable changes to this project will be documented in this file. See [standa
 - **register**: new user registration api scope updated for registration
 - **register**: new user registration updated UI for user registration and integrated APIs
 
-## 1.2.3b0 (2020-10-05)
+## 1.3.4 (2020-10-15)
+
+### Fix
+
+- return true for frame ancestor *
+
+## 1.3.3 (2020-10-15)
+
+### Fix
+
+- ci dependabot
 
 ## 1.3.2 (2020-10-15)
 

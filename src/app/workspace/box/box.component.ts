@@ -173,7 +173,7 @@ export class BoxComponent implements OnInit, OnDestroy {
               const frontUrl = window.location.host;
               const Frameancestor = Frameancestors.length > 1 && Frameancestors[1] ? Frameancestors[1] : null;
               if (Frameancestor) {
-                if (Frameancestor.indexOf(frontUrl) === -1) {
+                if (Frameancestor.indexOf('*') === -1 && Frameancestor.indexOf(frontUrl) === -1) {
                   error = `Service ${url} didn't allow ${frontUrl} in Frameancestor: \n ${Frameancestor}`;
                 }
               } else if (this.isAllowedFrameOption(frameOption, url)) {
