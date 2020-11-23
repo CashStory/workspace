@@ -27,3 +27,27 @@
     background-size: 80%;
   }
 }
+
+.theme-holder {
+  background: #3a33332b;
+  padding: 11px 17px 10px 14px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+}
+
+.theme-card {
+  padding: 0 !important;
+}
+
+.theme-preview {
+  height: 120px;
+  background-repeat: round !important;
+}
+
+.theme-name {
+  padding-left: 10px;
+  padding-top: 5px;
+}

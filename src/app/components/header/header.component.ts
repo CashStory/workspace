@@ -131,6 +131,11 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
+  toggleThemebar(): boolean {
+    this.sidebarService.toggle(true, 'theme-sidebar');
+    return false;
+  }
+
   openSearch() {
     this.searchService.activateSearch('rotate-layout');
   }

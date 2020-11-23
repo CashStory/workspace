@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { IBox, ISection, IWp } from '../../shared/models/workspace';
 import { IFavorite } from '../../shared/models/favorite';
-import { NbToastrService, NbDialogService, NbDialogRef } from '@nebular/theme';
+import { NbToastrService, NbDialogService, NbDialogRef, NbSidebarService } from '@nebular/theme';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { IUser } from '../../shared/models/user';
 import { environment } from '../../../environments/environment';
@@ -52,6 +52,7 @@ export class SectionComponent implements OnInit, OnDestroy {
   public sourceIndex: number;
   public activeContainer;
   lockStatus: boolean = true;
+  themeBarStatus: boolean = false;
   currentWpObs: any;
   currentWp: IWp;
   section: ISection;
@@ -98,6 +99,7 @@ export class SectionComponent implements OnInit, OnDestroy {
     private dialogService: NbDialogService,
     private formBuilder: FormBuilder,
     private viewportRuler: ViewportRuler,
+    private sidebarService: NbSidebarService,
   ) {
     this.target = null;
     this.source = null;

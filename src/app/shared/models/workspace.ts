@@ -72,6 +72,8 @@ export interface IWorkspace {
   shared_users: IShared[];
   createdAt?: string;
   updatedAt?: string;
+  is_template: boolean;
+  template_preview: string;
 }
 
 export { IWp, IBox, ISection };
