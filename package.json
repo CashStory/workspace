@@ -86,7 +86,7 @@
     "@types/node": "^13.9.1",
     "@types/puppeteer": "^3.0.2",
     "codelyzer": "^5.2.1",
-    "commitlint": "^8.3.5",
+    "commitlint": "^11.0.0",
     "htmlhint": "^0.14.1",
     "husky": "^3.1.0",
     "jest-dev-server": "^4.4.0",
