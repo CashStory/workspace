@@ -14,7 +14,7 @@
     }
   },
   "scripts": {
-    "start": "nps",
+    "start": "npx nps",
     "commit": "npx conventional-commit-cli",
     "test": "jest --forceExit"
   },
