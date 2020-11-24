@@ -1,5 +1,7 @@
 # Bob CashStory front 
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). 
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
