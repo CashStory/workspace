@@ -2,12 +2,198 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 1.4.0b1 (2020-10-15)
+## 1.4.0b0 (2020-11-24)
+
+### Fix
+
+- **ci**: updte actions
+- **update-bump**: update version update version to 1.4.0b1
+- **ci**: use alpine on dockerfile
+- **ci**: build
+
+## 1.4.0b1 (2020-11-24)
+
+### Fix
+
+- **version**: version incrimented version incrimented
+- **commonjs-fix**: commonjs warning fix warnings displayed with commonjs issue fixed based on official docs
+- **design**: design fix design and account page loading issue fixed
+- ci comitizen
+- ci path dependabot
+- **sonar-fix**: sonar issues fix updated to fix issues from sonar
+- **workspace**: loading workspace issue fixed workspace loading issue
+- **design**: design fix design and account page loading issue fixed
+- fix for linters
+- **sonar-fix**: sonar issues fix updated to fix issues from sonar
+- **workspace**: loading workspace issue fixed workspace loading issue
+
+### Feat
+
+- **templates**: workspace templates workspace template update
+- **templates**: workspace templates workspace template update
+- **templates**: workspace templates updated workspace template
+- **templates**: workspace templates template preview updated
+- **templates**: workspace templates added toast and redirection
+- **templates**: workspace templates api integration and listing tenplates in sidebar
+- **templates**: workspace templates api integration and listing tenplates in sidebar
+- **templates**: workspace templates ui update for templates in sidebar
+- **register**: new user registration api scope updated for registration
+- **register**: new user registration updated UI for user registration and integrated APIs
+- **register**: new user registration updated UI for user registration and integrated APIs
+- add register module
+- add register module
+- :sparkles: add register form
+- :sparkles: add register form
+- **request-access**: request ws access allow users to request access to workspace
+- **request-access**: allow user to request access UI updated and API integrated to allow user to request for access
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **register**: new user registration api scope updated for registration
+- **register**: new user registration updated UI for user registration and integrated APIs
+- **request-access**: request ws access allow users to request access to workspace
+- **request-access**: allow user to request access UI updated and API integrated to allow user to request for access
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+
+### Refactor
+
+- remove useless parenthesis
+- remove useless parenthesis
+
+## 1.2.3b0 (2020-10-05)
+
+## 1.3.4 (2020-11-24)
+
+### Fix
+
+- **version**: version incrimented version incrimented
+- **commonjs-fix**: commonjs warning fix warnings displayed with commonjs issue fixed based on official docs
+- **design**: design fix design and account page loading issue fixed
+- ci comitizen
+- ci path dependabot
+- **sonar-fix**: sonar issues fix updated to fix issues from sonar
+- **workspace**: loading workspace issue fixed workspace loading issue
+- **design**: design fix design and account page loading issue fixed
+
+### Feat
+
+- **templates**: workspace templates workspace template update
+- **templates**: workspace templates workspace template update
+- **templates**: workspace templates updated workspace template
+- **templates**: workspace templates template preview updated
+- **templates**: workspace templates added toast and redirection
+- **templates**: workspace templates api integration and listing tenplates in sidebar
+- **templates**: workspace templates api integration and listing tenplates in sidebar
+- **templates**: workspace templates ui update for templates in sidebar
+- **register**: new user registration api scope updated for registration
+- **register**: new user registration updated UI for user registration and integrated APIs
+- **register**: new user registration updated UI for user registration and integrated APIs
+- add register module
+- add register module
+- :sparkles: add register form
+- :sparkles: add register form
+- **request-access**: request ws access allow users to request access to workspace
+- **request-access**: allow user to request access UI updated and API integrated to allow user to request for access
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+
+### Refactor
+
+- remove useless parenthesis
+
+## 1.3.4 (2020-10-15)
 
 ### Feat
 
 - **register**: new user registration api scope updated for registration
 - **register**: new user registration updated UI for user registration and integrated APIs
+- **request-access**: request ws access allow users to request access to workspace
+- **request-access**: allow user to request access UI updated and API integrated to allow user to request for access
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+
+### Fix
+
+- fix for linters
+- **sonar-fix**: sonar issues fix updated to fix issues from sonar
+- **workspace**: loading workspace issue fixed workspace loading issue
+
+### Refactor
+
+- remove useless parenthesis
+
+## 1.2.3b0 (2020-10-05)
+
+## 1.3.4 (2020-11-24)
+
+### Fix
+
+- **ci**: updte actions
+- **update-bump**: update version update version to 1.3.4
+- **ci**: use alpine on dockerfile
+- **ci**: build
+
+## 1.3.4 (2020-11-24)
+
+### Fix
+
+- **version**: version incrimented version incrimented
+- **commonjs-fix**: commonjs warning fix warnings displayed with commonjs issue fixed based on official docs
+- **design**: design fix design and account page loading issue fixed
+- ci comitizen
+- ci path dependabot
+- **sonar-fix**: sonar issues fix updated to fix issues from sonar
+- **workspace**: loading workspace issue fixed workspace loading issue
+- **design**: design fix design and account page loading issue fixed
+
+### Feat
+
+- **templates**: workspace templates workspace template update
+- **templates**: workspace templates workspace template update
+- **templates**: workspace templates updated workspace template
+- **templates**: workspace templates template preview updated
+- **templates**: workspace templates added toast and redirection
+- **templates**: workspace templates api integration and listing tenplates in sidebar
+- **templates**: workspace templates api integration and listing tenplates in sidebar
+- **templates**: workspace templates ui update for templates in sidebar
+- **register**: new user registration api scope updated for registration
+- **register**: new user registration updated UI for user registration and integrated APIs
+- **register**: new user registration updated UI for user registration and integrated APIs
+- add register module
+- add register module
+- :sparkles: add register form
+- :sparkles: add register form
+- **request-access**: request ws access allow users to request access to workspace
+- **request-access**: allow user to request access UI updated and API integrated to allow user to request for access
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+
+### Refactor
+
+- remove useless parenthesis
+
+## 1.3.4 (2020-10-15)
+
+### Feat
+
+- **register**: new user registration api scope updated for registration
+- **register**: new user registration updated UI for user registration and integrated APIs
+- **request-access**: request ws access allow users to request access to workspace
+- **request-access**: allow user to request access UI updated and API integrated to allow user to request for access
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+- **sharing-wp**: updated sharing frontend added sharing and link sharing UI and implementation
+
+### Fix
+
+- fix for linters
+- **sonar-fix**: sonar issues fix updated to fix issues from sonar
+- **workspace**: loading workspace issue fixed workspace loading issue
+
+### Refactor
+
+- remove useless parenthesis
+
+## 1.2.3b0 (2020-10-05)
 
 ## 1.3.4 (2020-10-15)
 
