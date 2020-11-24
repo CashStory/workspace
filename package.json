@@ -1,13 +1,11 @@
 {
   "name": "cashstory_bob",
-  "version": "1.4.0b1",
+  "version": "1.4.0b0",
   "license": "MIT",
   "author": "Martin donadieu",
   "description": "Bob from Cashstory who manage cash in CAC40 company",
   "engines": {
-    "node": "11.x",
-    "npm": "6.4.1",
-    "yarn": "1.13."
+    "node": "15.x"
   },
   "husky": {
     "hooks": {
