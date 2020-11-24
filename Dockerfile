@@ -23,8 +23,4 @@ COPY . /app/
 # install dependency
 RUN npm i
 
-# build server
-RUN npm start json_model
-RUN npm start build
-
 CMD [ "node", "serve.js" ]
