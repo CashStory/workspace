@@ -59,7 +59,7 @@ export function jwtOptionsFactory() {
       },
     }),
     ThemeModule.forRoot(),
-    MonacoEditorModule.forRoot()
+    MonacoEditorModule.forRoot(),
   ],
   bootstrap: [
     AppComponent,
