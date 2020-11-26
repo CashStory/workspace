@@ -32,6 +32,7 @@ import {
 import { ThemeModule } from '../@theme/theme.module';
 import { LayoutComponent } from '../components/layout';
 import { ShareWorkspaceComponent } from './share-workspace/share-workspace.component';
+import { TemplateApplyComponent } from './template-apply/template-apply.component';
 
 const PAGES_COMPONENTS = [
   WorkspaceComponent,
@@ -56,6 +57,7 @@ const ENTRY_COMPONENTS = [
   UploadCardComponent,
   DuplicateWorkspaceComponent,
   ShareWorkspaceComponent,
+  TemplateApplyComponent,
 ];
 
 export function onMonacoLoad() {
@@ -99,11 +101,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
     DragDropModule,
     FileSaverModule,
     NbAccordionModule,
-    NbCardModule,
     NbDialogModule.forChild(),
     NbToastrModule.forRoot(),
     MonacoEditorModule.forRoot(monacoConfig),
     ColorPickerModule,
+    NbCardModule,
   ],
   declarations: [...ENTRY_COMPONENTS, ...PAGES_COMPONENTS, SafeStylePipe],
   entryComponents: [...ENTRY_COMPONENTS],
