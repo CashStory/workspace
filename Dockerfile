@@ -1,5 +1,5 @@
 FROM node:alpine
-ENV VERSION 1.4.0b7
+ENV VERSION 1.4.0b8
 LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.name="Workspace Front" \
   org.label-schema.description="Frontend of cashstory" \
