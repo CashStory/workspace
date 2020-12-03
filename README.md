@@ -24,7 +24,7 @@ Other tools and technologies used:
 ## Run
 `npm start`: [nps](https://github.com/kentcdodds/nps#readme) Angular build, TypeScript compiler.
 
-A window will automatically open at [localhost:4200](http://localhost:4200). Angular files are being watched. Any change automatically creates a new bundle and reload your browser.
+A window will automatically open at [localhost:4200](http://localhost:4200). Angular files are being watched. Any change automatically creates a new bundle and reload your browser. 
 
 ## HotChange proxy backend
 In a second terminal, you can change backend on the fly.
