@@ -5,7 +5,7 @@
 The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). 
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
-* [**A**ngular 7+](https://angular.io): frontend framework
+* [**A**ngular 11+](https://angular.io): frontend framework
 
 Other tools and technologies used:
 * [Angular CLI](https://cli.angular.io): frontend scaffolding
