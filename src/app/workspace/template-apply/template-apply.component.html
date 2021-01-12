@@ -1,0 +1,9 @@
+<nb-card>
+    <nb-card-body>
+        <h6> Are you sure to create workspace?</h6><br/>
+        <input type="text" nbInput fullWidth status="basic" placeholder="Default" 
+        [(ngModel)]="wpName"><br/><br/>
+        <p class="error" *ngIf="nameError">Workspace name is required!</p>
+        <button nbButton status="success" (click)="applyTheme()">Proceed</button>
+    </nb-card-body>
+</nb-card>

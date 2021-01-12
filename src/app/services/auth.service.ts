@@ -13,7 +13,8 @@ import * as stringSimilarity from 'string-similarity';
 import { IFavorite } from '../shared/models/favorite';
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup } from '@angular/forms';
-import { GoogleTagManagerService } from 'angular-google-tag-manager';
+import { NbDialogService } from '@nebular/theme';
+import { RequestAccessComponent } from 'app/workspace/request-access/request-access.component';
 
 declare global {
   interface Window { dataLayer: {}[]; }
@@ -27,6 +28,7 @@ export function authScheme() {
   return localStorage.getItem('authScheme');
 }
 
+window.dataLayer = window.dataLayer || [];
 @Injectable({
   providedIn: 'root',
 })
@@ -48,7 +50,7 @@ export class AuthService {
     private cookieService: CookieService,
     private router: Router,
     private workspaceService: WorkspaceService,
-    private gtmService: GoogleTagManagerService,
+    private dialogService: NbDialogService,
     private jwtHelper: JwtHelperService) {
     if (authScheme() == null) {
       localStorage.setItem('authScheme', 'Bearer ');
@@ -87,6 +89,12 @@ export class AuthService {
               this._Workspace = workspace;
               this.feedWpWithLogoANdName();
               this.currentWorkspaceObs.next(workspace);
+            },
+            (err) => {
+              if (err.status === 401) {
+                this.dialogService.open(RequestAccessComponent,
+                  { hasScroll: true, closeOnEsc: false, closeOnBackdropClick: false, hasBackdrop: false });
+              }
             });
         }
       }
@@ -179,7 +187,7 @@ export class AuthService {
     if (!this._User) {
       return false;
     }
-    return this._User.workspaces[this._Workspace._id].favorites.boxes
+    return this._User.workspaces[this._Workspace._id]?.favorites.boxes
         .find((val, index) => {
           if (val.wp && val.wp.box === wp.box
             && val.wp.id === wp.id
@@ -320,6 +328,10 @@ export class AuthService {
 
   private loginApi(credentials: ILogin): Observable<any> {
     return this.http.post<any>(`${environment.api}/auth/login`, credentials);
+  }
+
+  register(userData: IUser): Observable<any> {
+    return this.http.post<any>(`${environment.api}/auth/register`, userData);
   }
 
   private getDecodeUser() {
@@ -465,23 +477,19 @@ export class AuthService {
       }
       this.loggedIn = true;
       this.isAdmin = user.role === 'admin' ? true : false;
-      if (environment.gtm_id) {
-        this.gtmService.pushTag({
-          event: 'eventGA',
-          eventCategory: 'Account',
-          eventAction: 'Login',
-          eventLabel: user._id,
-        });
-      }
+      window.dataLayer.push({
+        event: 'eventGA',
+        eventCategory: 'Account',
+        eventAction: 'Login',
+        eventLabel: user._id,
+      });
     } else {
-      if (environment.gtm_id) {
-        this.gtmService.pushTag({
-          user: {
-            userId: this.loggedIn ? user._id : undefined,
-            loginState: this.loggedIn,
-          },
-        });
-      }
+      window.dataLayer.push({
+        user: {
+          userId: this.loggedIn ? user._id : undefined,
+          loginState: this.loggedIn,
+        },
+      });
     }
     this.currentUserObs.next(user);
     this._User = user;

@@ -54,6 +54,12 @@
   .logo a:hover {
     text-decoration: none;
   }
+  .share-btn {
+    background-color:#fbc117;
+  }
+  .share-btn:hover {
+    background-color: #fbc217ce;
+  }
 }
 
 ::ng-deep nb-context-menu {
@@ -80,4 +86,12 @@
   nb-select {
     display: none;
   }
+}
+
+.theme-holder {
+  float: right;
+  background: #3a33332b;
+  padding: 11px 17px 10px 14px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
 }

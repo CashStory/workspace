@@ -3,7 +3,11 @@ import { FullscreenLockService } from '../../services/fullscreen-lock.service';
 import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { delay, withLatestFrom, takeWhile } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
+import { WorkspaceService } from '../../services/workspace.service';
+import { TemplateApplyComponent } from '../../workspace/template-apply/template-apply.component';
+
 import {
+  NbDialogService,
   NbMediaBreakpoint,
   NbMediaBreakpointsService,
   NbMenuItem,
@@ -36,6 +40,31 @@ import hotkeysJs from 'hotkeys-js';
       <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
+      <nb-sidebar class="theme-sidebar"
+                   tag="theme-sidebar"
+                   responsive
+                   state="compacted"
+                   [end]="true">
+            <div *ngIf="themeSidebar">
+            <div (click)="toggleThemebar()">
+                <h6>Templates
+                  <em class="fas fa-times" style="float:right;"></em>
+                </h6>
+                <hr/>
+            </div>
+
+            <div *ngFor="let template of templatelist">
+            <nb-card (click)="chooseTheme(template._id)">
+              <nb-card-body class="theme-card">
+                <div class="theme-preview" style="background:url('assets/templates/{{template.template_preview}}')">
+                </div>
+                <h6 class="theme-name">{{template.name}}</h6>
+              </nb-card-body>
+            </nb-card>
+            </div>
+      </div>
+      </nb-sidebar>
+
       <nb-layout-column [class]="getClass()">
         <ng-content select="router-outlet"></ng-content>
       </nb-layout-column>
@@ -45,13 +74,20 @@ import hotkeysJs from 'hotkeys-js';
       <ngx-floating-button-item (click)="unFocus()" icon="compress-alt" status="basic" label="Back to bob" color="white"></ngx-floating-button-item>
       <!--Here We can Configure N number of Floating buttons-->
     </ngx-floating-button>
+    <div class="theme-holder" (click)="toggleThemebar()" *ngIf="!themeSidebar">
+    <em class="fas fa-angle-left" style="font-size: large;"></em>
+  </div>
   `,
 })
 export class LayoutComponent implements OnDestroy, OnInit {
+  templatelist;
   currentWs: IWp;
   ngOnInit() {
     this.auth.currentWpObs.subscribe((workspaceCurrent) => {
       this.currentWs = workspaceCurrent;
+    });
+    this.wss.getTemplates().subscribe((templates) => {
+      this.templatelist = templates;
     });
     hotkeysJs('escape', (event) => {
       this.unFocus();
@@ -65,6 +101,7 @@ export class LayoutComponent implements OnDestroy, OnInit {
   ];
   layout: any = {};
   sidebar: any = {};
+  themeSidebar: boolean = false;
 
   private alive = true;
 
@@ -91,7 +128,9 @@ export class LayoutComponent implements OnDestroy, OnInit {
     public searchService: NgxSearchService,
     public focusService: FocusService,
     public fullscreenLockService: FullscreenLockService,
-    private auth: AuthService) {
+    private auth: AuthService,
+    private dialogService: NbDialogService,
+    private wss: WorkspaceService) {
     const isBp = this.bpService.getByName('is');
     this.menuService.onItemSelect()
       .pipe(
@@ -105,6 +144,20 @@ export class LayoutComponent implements OnDestroy, OnInit {
         }
       });
 
+  }
+
+  chooseTheme(id) {
+    this.dialogService.open(TemplateApplyComponent, {
+      hasScroll: true,
+      context: {
+        templateId: id,
+      },
+    });
+  }
+
+  toggleThemebar() {
+    this.sidebarService.toggle(true, 'theme-sidebar');
+    this.themeSidebar = !this.themeSidebar;
   }
 
   async unFocusAndSearch() {

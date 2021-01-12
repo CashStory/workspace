@@ -96,7 +96,6 @@ export class DashboardComponent implements OnInit, OnChanges {
     this.newsService.load(this.pageToLoadNext, this.pageSize, this.workspaceConfig)
       .subscribe((nextNews) => {
         this.placeholders = [];
-
         this.news.push(...nextNews);
         this.loading = false;
         this.pageToLoadNext += 1;

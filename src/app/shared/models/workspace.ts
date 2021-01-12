@@ -9,6 +9,7 @@ interface IBox {
   iframe?: boolean;
   hideElements?: string[];
   login?: ILogin;
+  smartTable?: ISmartTable;
   cors?: string;
   class?: string;
   injectCSS?: string;
@@ -29,6 +30,11 @@ interface IWp {
   logo?: ILogo;
   bobVoice?: boolean;
   data?: any;
+}
+
+export interface IShared {
+  email: string;
+  role: string;
 }
 
 interface IMenu {
@@ -55,6 +61,7 @@ interface ISection {
   box: IBox[];
 }
 export interface IWorkspace {
+  linkShared: any;
   _id?: string;
   name: string;
   creatorId: string;
@@ -62,8 +69,11 @@ export interface IWorkspace {
   bobVoice?: boolean;
   menu: IMenu[];
   sections: ISection[];
+  shared_users: IShared[];
   createdAt?: string;
   updatedAt?: string;
+  is_template: boolean;
+  template_preview: string;
 }
 
 export { IWp, IBox, ISection };

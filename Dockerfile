@@ -1,6 +1,5 @@
-FROM node:lts-alpine
-
-ENV VERSION 1.3.4
+FROM node:alpine
+ENV VERSION 1.4.0b8
 LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.name="Workspace Front" \
   org.label-schema.description="Frontend of cashstory" \
@@ -23,9 +22,5 @@ COPY . /app/
 
 # install dependency
 RUN npm i
-
-# build server
-RUN npm start json_model
-RUN npm start build
 
 CMD [ "node", "serve.js" ]

@@ -1,9 +1,11 @@
-# Bob CashStory front 
+# Workspaces front
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). 
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
-* [**A**ngular 7+](https://angular.io): frontend framework
+* [**A**ngular 11+](https://angular.io): frontend framework
 
 Other tools and technologies used:
 * [Angular CLI](https://cli.angular.io): frontend scaffolding
@@ -22,7 +24,7 @@ Other tools and technologies used:
 ## Run
 `npm start`: [nps](https://github.com/kentcdodds/nps#readme) Angular build, TypeScript compiler.
 
-A window will automatically open at [localhost:4200](http://localhost:4200). Angular files are being watched. Any change automatically creates a new bundle and reload your browser.
+A window will automatically open at [localhost:4200](http://localhost:4200). Angular files are being watched. Any change automatically creates a new bundle and reload your browser. 
 
 ## HotChange proxy backend
 In a second terminal, you can change backend on the fly.
