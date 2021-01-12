@@ -44,7 +44,7 @@
     "@types/jest": "^26.0.14",
     "angular-google-tag-manager": "^1.2.3",
     "angular2-uuid": "^1.1.1",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.3",
     "classlist.js": "^1.1.20150312",
     "commitizen": "^4.2.2",
     "conventional-commit-cli": "^1.1.1",
