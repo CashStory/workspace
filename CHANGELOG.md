@@ -1,3 +1,9 @@
+## 1.5.4 (2021-01-14)
+
+### Fix
+
+- build error missing package
+
 ## 1.5.3 (2021-01-14)
 
 ### Fix
