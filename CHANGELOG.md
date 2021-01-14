@@ -1,3 +1,9 @@
+## 1.5.1 (2021-01-14)
+
+### Fix
+
+- revert angular version to make build great again
+
 ## 1.5.0 (2021-01-14)
 
 ### Fix
