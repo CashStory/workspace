@@ -1,3 +1,15 @@
+## 1.5.0 (2021-01-14)
+
+### Fix
+
+- **ci-fix**: ci fix update
+- **ci**: ci fix
+- **ci-fix**: ci fix
+
+### Feat
+
+- **ci-fix**: ci fix updated
+
 ## 1.4.8 (2021-01-13)
 
 ### Fix
